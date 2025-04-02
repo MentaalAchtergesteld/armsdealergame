@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 80"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg26"
+   sodipodi:docname="noun-artillery-6272613.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs30" />
+  <sodipodi:namedview
+     id="namedview28"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="5.4125"
+     inkscape:cx="23.371824"
+     inkscape:cy="41.939954"
+     inkscape:window-width="1920"
+     inkscape:window-height="1048"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg26" />
+  <polygon
+     points="29.894 35.856 35.304 27.446 32.41 25.651 27.169 34.17 29.894 35.856"
+     id="polygon2" />
+  <polygon
+     points="11.164 16.059 9.02 19.53 18.98 26.242 21.636 21.912 11.164 16.059"
+     id="polygon4" />
+  <polygon
+     points="29.633 26.349 23.385 22.886 20.638 27.365 26.538 31.379 29.633 26.349"
+     id="polygon6" />
+  <polygon
+     points="7.4 12.621 3.14 10.001 0 15.111 4.26 17.731 7.207 18.661 9.57 14.836 7.4 12.621"
+     id="polygon8" />
+  <polygon
+     points="55 38.001 49.837 35.466 49.626 38.631 53.765 40.471 55 38.001"
+     id="polygon10" />
+  <polygon
+     points="56 46.001 56.682 43.955 49.485 40.757 49.081 46.824 50.794 47.09 56 46.001"
+     id="polygon12" />
+  <path
+     d="m39.81,47.471c-.52-.83-1.2-1.54-2-2.1-1.22-.86-2.7-1.37-4.31-1.37-1.81,0-3.46.64-4.76,1.71-1.67,1.37-2.74,3.46-2.74,5.79,0,4.14,3.36,7.5,7.5,7.5,3.57,0,6.56-2.5,7.31-5.84.13-.53.19-1.09.19-1.66,0-1.49-.43-2.87-1.18-4.03h-.01Zm-6.31,7.03c-1.66,0-3-1.34-3-3s1.34-3,3-3,3,1.34,3,3-1.34,3-3,3Z"
+     id="path14" />
+  <path
+     d="m44.495,35.248s-.004.006-.006.009l-4.613,9.22c.341.31.662.639.953.995.052,0,.104.005.156.013l6.111,1.019.917-13.749-2.019-.505-1.497,2.991s0,.005-.002.007Z"
+     id="path16" />
+  <path
+     d="m29,41.001l.387,1.94c1.271-.616,2.661-.94,4.113-.94,1.678,0,3.29.463,4.729,1.297l2.138-4.273-2.738-1.095c-.513-.205-.762-.787-.557-1.3.205-.514.786-.766,1.3-.558l2.893,1.157.992-1.982-2.704-1.352c-.494-.247-.694-.848-.447-1.342.247-.494.847-.692,1.342-.447l2.704,1.352,1.848-3.694v-2.763h-7l-1.14,1.77-5.41,8.41-2.45,3.82Z"
+     id="path18" />
+  <path
+     d="m63.97,57.759l-.97-3.881v-2.865l-15.134-2.354-5.663-.944c.518,1.185.797,2.468.797,3.786,0,.26-.023.509-.042.76l17.967,1.56.795,3.18h-3.719c-.552,0-1,.447-1,1s.448,1,1,1h5c.308,0,.599-.142.788-.385.189-.242.257-.559.182-.857Z"
+     id="path20" />
+</svg>

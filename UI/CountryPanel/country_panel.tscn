@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu4rwedbeg8wv"]
+
+[ext_resource type="Script" uid="uid://ciuniwmecaev6" path="res://UI/CountryPanel/country_panel.gd" id="1_mir5y"]
+[ext_resource type="Texture2D" uid="uid://bbssem68v2gaj" path="res://Assets/CountryFlags/Belgium.svg" id="3_sxbgx"]
+
+[sub_resource type="Animation" id="Animation_rvgky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-320, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mir5y"]
+resource_name = "close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-320, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sxbgx"]
+resource_name = "open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1.03526),
+"update": 0,
+"values": [Vector2(-320, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvgky"]
+_data = {
+&"RESET": SubResource("Animation_rvgky"),
+&"close": SubResource("Animation_mir5y"),
+&"open": SubResource("Animation_sxbgx")
+}
+
+[node name="CountryPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = -1
+anchor_right = 0.277778
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = -320.0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+script = ExtResource("1_mir5y")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Flag" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("3_sxbgx")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Belgium"
+vertical_alignment = 1
+
+[node name="RegimeType" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Autocracy"
+
+[node name="Stability" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Stability: 10.0"
+
+[node name="Close" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rvgky")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]

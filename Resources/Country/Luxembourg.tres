@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Country" load_steps=4 format=3 uid="uid://bfvyh1ed3tul0"]
+
+[ext_resource type="Texture2D" uid="uid://b1hqothr0oqpu" path="res://Assets/CountryFlags/Luxembourg.png" id="1_3kb8e"]
+[ext_resource type="Script" uid="uid://dfbthcphygry1" path="res://Resources/Country/country.gd" id="2_y0jkq"]
+[ext_resource type="Script" uid="uid://g2bmvw0sh088" path="res://Resources/War/war.gd" id="3_23vlm"]
+
+[resource]
+script = ExtResource("2_y0jkq")
+name = "Luxembourg"
+flag = ExtResource("1_3kb8e")
+stability = 1.0
+regime = 2
+wars = Array[ExtResource("3_23vlm")]([])
+metadata/_custom_type_script = "uid://dfbthcphygry1"

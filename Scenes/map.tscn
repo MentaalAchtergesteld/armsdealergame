@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7wdu0xe8x48r"]
+
+[ext_resource type="Script" uid="uid://blrognf1ecrht" path="res://Scenes/map.gd" id="1_p3ir5"]
+[ext_resource type="Script" uid="uid://dljdjouqdiipg" path="res://Components/CountryRegion/country_region.gd" id="2_26yhd"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_p3ir5")
+map_path = "res://Assets/Maps/ENTIRE_WORLD_ISO_A2_EH.json"
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="CountryRegion" type="Area2D" parent="Regions"]
+script = ExtResource("2_26yhd")
+metadata/_custom_type_script = "uid://dljdjouqdiipg"

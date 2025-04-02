@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Country" load_steps=4 format=3 uid="uid://cgjm1lcdhc6g"]
+
+[ext_resource type="Script" uid="uid://dfbthcphygry1" path="res://Resources/Country/country.gd" id="1_q2wbk"]
+[ext_resource type="Texture2D" uid="uid://cjf647itnvlvn" path="res://Assets/CountryFlags/Netherlands.svg" id="1_sv2t3"]
+[ext_resource type="Script" uid="uid://g2bmvw0sh088" path="res://Resources/War/war.gd" id="2_3mnmh"]
+
+[resource]
+script = ExtResource("1_q2wbk")
+name = "Netherlands"
+flag = ExtResource("1_sv2t3")
+stability = 0.75
+regime = 0
+wars = Array[ExtResource("2_3mnmh")]([])
+metadata/_custom_type_script = "uid://dfbthcphygry1"
