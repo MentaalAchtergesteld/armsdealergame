@@ -5,7 +5,8 @@ const COUNTRY_DIR: String = "res://Resources/Country";
 var countries: Dictionary[String, Country] = {};
 
 func _ready() -> void:
-	load_countries();
+	#load_countries();
+	pass
 
 func load_countries():
 	var dir := DirAccess.open(COUNTRY_DIR);
@@ -71,19 +72,34 @@ func fetch_country_flag(country_code: String) -> ImageTexture:
 	var texture = ImageTexture.create_from_image(image);
 	return texture;
 
+func create_country_from_map_data(data: Dictionary):
+	var country = Country.new();
+	country.name = data.get("Name", "CountryName");
+	var flag_path = "res://Assets/" + data.get("FlagPath", "default.svg");
+	if ResourceLoader.exists(flag_path):
+		country.flag = load(flag_path);
+	else:
+		country.flag = load("res://Assets/default.svg");
+	
+	match data.get("Regime", "Democracy"):
+		"Democracy":
+			country.regime = Country.RegimeType.Democracy;
+		"Autocracy":
+			country.regime = Country.RegimeType.Autocracy;
+		"Oligarchy":
+			country.regime = Country.RegimeType.Oligarchy;
+	
+	country.stability = data.get("Stability", 0.5);
+	
+	return country;
+
 func create_country_region(feature: Dictionary, polygon_multiplier: float) -> CountryRegion:
 		var properties: Dictionary = feature.get("properties", {});
-		var country_name: String = properties.get("NAME", "");
+		var country_name: String = properties.get("Name", "");
 		
 		var country = countries.get(country_name);
 		if country == null:
-			country = Country.new();
-			country.name = country_name;
-			
-			var country_code = properties.get("ISO_A2_EH");
-			if country_code != null:
-				var flag_texture = await fetch_country_flag(country_code);
-				country.flag = flag_texture;
+			country = create_country_from_map_data(properties);
 		
 		var geometry: Dictionary = feature.get("geometry", {});
 		if geometry.get("type", "") != "MultiPolygon":
@@ -102,7 +118,7 @@ func generate_country_regions(map_path: String, polygon_multiplier: float) -> Ar
 	var regions: Array[CountryRegion] = [];
 	
 	for feature in features:
-		var region = await create_country_region(feature, polygon_multiplier);
+		var region = create_country_region(feature, polygon_multiplier);
 		if region: regions.append(region);
 	
 	return regions;

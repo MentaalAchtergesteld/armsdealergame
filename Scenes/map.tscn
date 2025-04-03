@@ -5,7 +5,7 @@
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_p3ir5")
-map_path = "res://Assets/Maps/ENTIRE_WORLD_ISO_A2_EH.json"
+map_path = "res://Assets/Maps/TestMap.geojson"
 
 [node name="Regions" type="Node2D" parent="."]
 

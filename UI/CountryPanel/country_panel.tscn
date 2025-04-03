@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cu4rwedbeg8wv"]
 
 [ext_resource type="Script" uid="uid://ciuniwmecaev6" path="res://UI/CountryPanel/country_panel.gd" id="1_mir5y"]
-[ext_resource type="Texture2D" uid="uid://bbssem68v2gaj" path="res://Assets/CountryFlags/Belgium.svg" id="3_sxbgx"]
+[ext_resource type="Texture2D" uid="uid://bbssem68v2gaj" path="res://Assets/Flags/Belgium.svg" id="3_sxbgx"]
 
 [sub_resource type="Animation" id="Animation_rvgky"]
 length = 0.001
@@ -93,6 +93,7 @@ size_flags_vertical = 4
 
 [node name="Flag" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Panel"]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
