@@ -42,7 +42,7 @@ func drag_camera(event: InputEvent) -> void:
 		
 		position = drag_camera_start_position + drag_delta * 1/zoom;
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	drag_camera(event);
 	
 	if event.is_action_pressed("zoom_in"):

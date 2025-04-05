@@ -7,7 +7,7 @@ extends Node2D
 @onready var regions_node: Node2D = $Regions;
 
 func _ready() -> void:
-	var regions = await CountryManager.generate_country_regions(map_path, polygon_multiplier);
+	var regions = CountryManager.generate_country_regions(map_path, polygon_multiplier);
 	
 	for region in regions:
 		regions_node.add_child(region);

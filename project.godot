@@ -19,6 +19,8 @@ config/icon="res://Assets/default.svg"
 
 EventBus="*res://Autloads/event_bus.gd"
 CountryManager="*res://Autloads/country_manager.gd"
+UiManager="*res://Autloads/ui_manager.gd"
+UIEventBus="*res://Autloads/ui_event_bus.gd"
 
 [display]
 

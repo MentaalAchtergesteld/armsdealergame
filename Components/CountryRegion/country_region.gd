@@ -10,12 +10,18 @@ extends Area2D
 
 @export var default_outline_width: float = 2.0;
 @export var selected_outline_width: float = 4.0;
+var outlines: Array[Line2D] = [];
 
 var selected: bool = false;
 
-var outlines: Array[Line2D] = [];
+func toggle_select():
+	if selected:
+		deselect();
+	else:
+		select();
 
 func select():
+	if selected: return;
 	selected = true;
 	for outline in outlines:
 		outline.default_color = selected_outline_color;
@@ -23,6 +29,7 @@ func select():
 		outline.width = selected_outline_width;
 
 func deselect():
+	if !selected: return;
 	for outline in outlines:
 		outline.default_color = default_outline_color;
 		outline.z_index = 0;
@@ -31,28 +38,25 @@ func deselect():
 
 func _ready() -> void:
 	input_event.connect(_on_input_event);
-	EventBus.ui_open_country_panel.connect(_on_ui_open_country_panel);
-	EventBus.ui_close_country_panel.connect(_on_ui_close_country_panel);
+	UIEventBus.open_panel.connect(_on_panel_change);
+	UIEventBus.close_panel.connect(_on_panel_change);
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
+func _on_panel_change(panel_name: String, data: Dictionary = {}) -> void:
+	if panel_name != "country": return;
+	var panel_country = data.get("country");
+	if panel_country != country:
+		deselect();
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("ui_click"):
-		if not selected:
-			EventBus.ui_open_country_panel.emit(country);
+		toggle_select();
+		
+		if selected:
+			UIEventBus.open_panel.emit("country", {country=country});
 		else:
-			EventBus.ui_close_country_panel.emit();
+			UIEventBus.close_panel.emit("country");
 
-func _on_ui_open_country_panel(selected_country: Country):
-	if selected_country == country:
-		select();
-	elif selected:
-		deselect();
-
-func _on_ui_close_country_panel():
-	if selected:
-		deselect();
-
-
-static func create(country: Country, polygons: Array[PackedVector2Array]):
+static func create(country: Country, polygons: Array[PackedVector2Array]) -> CountryRegion:
 	var region = CountryRegion.new();
 	region.country = country;
 	

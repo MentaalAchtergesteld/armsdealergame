@@ -1,69 +1,40 @@
 @tool
 class_name CountryPanel
-extends PanelContainer
+extends BasePanel
 
-@export_tool_button("Close") var close_panel_button = close;
-@export_tool_button("Open") var open_panel_button = open;
+const DEFAULT: Texture2D = preload("res://Assets/default.svg")
 
-@export var country: Country:
-	set(value):
-		if is_inside_tree():
-			country = value;
-			update_panel();
+@onready var flag: TextureRect = %Flag;
+@onready var country_name: Label = %CountryName;
+@onready var regime: LabeledField = %Regime;
+@onready var stability: LabeledField = %Stability;
+@onready var population: LabeledField = %Population;
+@onready var gdp: LabeledField = %GDP;
+@onready var military_power: LabeledField = %MilitaryPower;
 
-@onready var flag_texture: TextureRect = %Flag;
-@onready var name_label: Label = %Name;
-@onready var regime_type_label: Label = %RegimeType;
-@onready var stability_label: Label = %Stability;
-
-@onready var animation_player: AnimationPlayer = $AnimationPlayer;
-
-var is_open = false;
-
-func close():
-	if is_open:
-		animation_player.play("close");
-		is_open = false;
-
-func open():
-	if not is_open:
-		animation_player.play("open");
-		is_open = true;
-
-func update_panel():
+func update_country(country: Country):
 	if country == null:
-		flag_texture.texture = null;
-		name_label.text = "Country";
-		regime_type_label.text = "Regime Type";
-		stability_label.text = "Stability: 50.0";
-	else:
-		flag_texture.texture = country.flag;
-		name_label.text = country.name;
-		
-		match country.regime:
-			Country.RegimeType.Democracy:
-				regime_type_label.text = "Democracy";
-			Country.RegimeType.Autocracy:
-				regime_type_label.text = "Autocracy";
-			Country.RegimeType.Oligarchy:
-				regime_type_label.text = "Oligarchy";
-		
-		stability_label.text = "Stability: " + str(country.stability*100);
-
-func _ready() -> void:
-	if Engine.is_editor_hint(): return;
+		country = Country.new();
 	
-	animation_player.play("RESET");
-	EventBus.ui_open_country_panel.connect(_on_open);
-	EventBus.ui_close_country_panel.connect(_on_close);
-	update_panel();
+	if !is_inside_tree(): return;
+	
+	flag.texture = country.flag;
+	country_name.text = country.name;
+	
+	match country.regime:
+		Country.RegimeType.Democracy:
+			regime.set_field("Democratic");
+		Country.RegimeType.Autocracy:
+			regime.set_field("Autocratic");
+		Country.RegimeType.Oligarchy:
+			regime.set_field("Oligarchic");
+	
+	stability.set_field(country.stability * 100);
+	population.set_field(100);
+	gdp.set_field(100);
+	military_power.set_field(100);
 
-func _on_open(new_country: Country):
-	country = new_country;
-	open();
-
-func _on_close():
-	close();
-
-func _on_close_pressed() -> void:
-	close();
+func setup(data: Dictionary = {}):
+	var new_country: Country = data.get("country");
+	if new_country == null: return;
+	update_country(new_country);

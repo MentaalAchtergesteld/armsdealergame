@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjdtrnplith8w"]
+
+[ext_resource type="PackedScene" uid="uid://bnlnfejyhrq23" path="res://UI/BasePanel/base_panel.tscn" id="1_keos6"]
+[ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="2_rrje7"]
+[ext_resource type="Script" uid="uid://b6a8bgknab2ka" path="res://UI/ContractPanel/contract_panel.gd" id="2_tjy5g"]
+
+[node name="ContractPanel" instance=ExtResource("1_keos6")]
+script = ExtResource("2_tjy5g")
+
+[node name="Title" type="Label" parent="MarginContainer/Contents" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_rrje7")
+theme_override_font_sizes/font_size = 48
+text = "Contracts"
+horizontal_alignment = 1
+
+[node name="HSeperator" type="HSeparator" parent="MarginContainer/Contents" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Contents" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Contents/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Contracts" type="VBoxContainer" parent="MarginContainer/Contents/MarginContainer/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Close" parent="MarginContainer/Contents" index="3"]
+size_flags_vertical = 8

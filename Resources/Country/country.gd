@@ -8,7 +8,7 @@ enum RegimeType {
 }
 
 @export var name: String = "Country";
-@export var flag: Texture2D;
+@export var flag: Texture2D = preload("res://Assets/default.svg");
 
 @export_range(0, 1) var stability: float = 1.0;
 

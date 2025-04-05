@@ -4,7 +4,3 @@
 
 [node name="CountryRegion" type="Area2D"]
 script = ExtResource("1_34pk4")
-default_outline_color = null
-selected_outline_color = null
-default_outline_width = null
-selected_outline_width = null

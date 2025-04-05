@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0grmpuocmj2a"]
+
+[ext_resource type="Script" uid="uid://jf5ilqgbl4i7" path="res://UI/ContractPanel/ContractListing/contract_listing.gd" id="1_ia0dc"]
+[ext_resource type="Resource" uid="uid://bp7c78xnfca0i" path="res://Resources/Contract/DebugContract.tres" id="2_kr1cc"]
+[ext_resource type="Texture2D" uid="uid://3h48x6hhd5gt" path="res://Assets/default.svg" id="3_ru6x5"]
+[ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="4_1eo77"]
+
+[node name="ContractListing" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_ia0dc")
+contract = ExtResource("2_kr1cc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="FlagContainer" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="IssuerFlag" type="TextureRect" parent="MarginContainer/HBoxContainer/FlagContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ru6x5")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Type" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1eo77")
+theme_override_font_sizes/font_size = 24
+text = "Type: Buy"
+
+[node name="Deadline" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1eo77")
+theme_override_font_sizes/font_size = 16
+text = "20"

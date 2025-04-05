@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw1x8sc06xa41"]
+
+[ext_resource type="Script" uid="uid://clpwo3tplt1bv" path="res://UI/LabeledField/labeled_field.gd" id="1_42vyt"]
+[ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="2_56qs2"]
+
+[node name="LabeledField" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_42vyt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_56qs2")
+theme_override_font_sizes/font_size = 24
+text = "Label:"
+
+[node name="Field" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_56qs2")
+theme_override_font_sizes/font_size = 24
