@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0grmpuocmj2a"]
 
 [ext_resource type="Script" uid="uid://jf5ilqgbl4i7" path="res://UI/ContractPanel/ContractListing/contract_listing.gd" id="1_ia0dc"]
-[ext_resource type="Resource" uid="uid://bp7c78xnfca0i" path="res://Resources/Contract/DebugContract.tres" id="2_kr1cc"]
 [ext_resource type="Texture2D" uid="uid://3h48x6hhd5gt" path="res://Assets/default.svg" id="3_ru6x5"]
 [ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="4_1eo77"]
+[ext_resource type="PackedScene" uid="uid://dw1x8sc06xa41" path="res://UI/LabeledField/labeled_field.tscn" id="4_kpxfh"]
 
 [node name="ContractListing" type="PanelContainer"]
 offset_right = 40.0
@@ -11,7 +11,6 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 script = ExtResource("1_ia0dc")
-contract = ExtResource("2_kr1cc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -54,9 +53,29 @@ theme_override_fonts/font = ExtResource("4_1eo77")
 theme_override_font_sizes/font_size = 24
 text = "Type: Buy"
 
-[node name="Deadline" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Deadline" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_kpxfh")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_1eo77")
+label = "Deadline"
+value = "test"
+
+[node name="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline" index="0"]
 theme_override_font_sizes/font_size = 16
-text = "20"
+text = "Deadline:"
+
+[node name="Field" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline" index="1"]
+theme_override_font_sizes/font_size = 16
+text = "test"
+
+[node name="IsExpired" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.18, 0.18, 1)
+theme_override_fonts/font = ExtResource("4_1eo77")
+text = "Expired"
+vertical_alignment = 1
+
+[editable path="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline"]

@@ -1,13 +1,17 @@
 class_name Contract
 extends Resource
 
+signal contract_expired(bids: Array[Bid]);
+
 enum ContractType { Buy, Sell };
 
 @export var type: ContractType = ContractType.Buy;
 @export var issuer: Country;
 @export var goods: Array = [];
 @export var deadline: int = 0;
-@export var bids: Array = [];
+@export var bids: Array[Bid] = [];
+
+var expired: bool = false;
 
 func get_winning_bid() -> Bid:
 	if bids.is_empty(): return null;
@@ -27,5 +31,10 @@ static func create(issuer: Country, type: ContractType, goods: Array, deadline: 
 	contract.type = type;
 	contract.goods = goods;
 	contract.deadline = deadline;
+	
+	GameTime.add_alarm(contract.deadline, func():
+		contract.contract_expired.emit(contract.bids);
+		contract.expired = true;
+	);
 	
 	return contract;

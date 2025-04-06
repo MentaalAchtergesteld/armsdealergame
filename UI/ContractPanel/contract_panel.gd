@@ -16,7 +16,8 @@ func setup(data: Dictionary = {}) -> void:
 	update_contract_listings();
 
 func _on_contracts_changed() -> void:
-	update_contract_listings();
+	if is_open:
+		update_contract_listings();
 
 func _ready() -> void:
 	GlobalMarket.contracts_changed.connect(_on_contracts_changed);

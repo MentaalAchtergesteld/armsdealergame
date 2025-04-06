@@ -20,6 +20,7 @@ config/icon="res://Assets/default.svg"
 CountryManager="*res://Autloads/country_manager.gd"
 UIEventBus="*res://Autloads/ui_event_bus.gd"
 GlobalMarket="*res://Autloads/global_market.gd"
+GameTime="*res://Autloads/game_time.gd"
 
 [display]
 
