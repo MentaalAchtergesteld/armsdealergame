@@ -91,6 +91,8 @@ func create_country_from_map_data(data: Dictionary):
 	
 	country.stability = data.get("Stability", 0.5);
 	
+	countries[country.name] = country;
+	
 	return country;
 
 func create_country_region(feature: Dictionary, polygon_multiplier: float) -> CountryRegion:

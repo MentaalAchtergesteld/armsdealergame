@@ -23,6 +23,9 @@ func update_listing():
 	
 	deadline.text = str(contract.deadline);
 
+func _ready() -> void:
+	update_listing();
+
 const scene: PackedScene = preload("res://UI/ContractPanel/ContractListing/contract_listing.tscn");
 
 static func create(contract: Contract) -> ContractListing:

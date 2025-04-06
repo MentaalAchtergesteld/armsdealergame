@@ -32,6 +32,7 @@ size_flags_horizontal = 2
 
 [node name="IssuerFlag" type="TextureRect" parent="MarginContainer/HBoxContainer/FlagContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

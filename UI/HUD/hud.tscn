@@ -49,10 +49,21 @@ theme_override_fonts/font = ExtResource("1_ing8j")
 theme_override_font_sizes/font_size = 32
 text = "Contracts"
 
+[node name="SellContract" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Add random sell contract"
+
+[node name="BuyContract" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Add random buy contract"
+
 [node name="PanelManager" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
 script = ExtResource("3_radol")
 
 [node name="CountryPanel" parent="VBoxContainer/PanelManager" instance=ExtResource("1_ia7gp")]
@@ -69,3 +80,5 @@ anchor_bottom = 0.0
 offset_bottom = 1012.0
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/ContractsButton" to="." method="_on_contracts_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/SellContract" to="." method="_on_sell_contract_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/BuyContract" to="." method="_on_buy_contract_pressed"]

@@ -18,3 +18,14 @@ func get_winning_bid() -> Bid:
 		bids.sort_custom(func(a, b): return a.offer > b.offer);
 	
 	return bids[0];
+
+@warning_ignore("shadowed_variable")
+static func create(issuer: Country, type: ContractType, goods: Array, deadline: int) -> Contract:
+	var contract: Contract = Contract.new();
+	
+	contract.issuer = issuer;
+	contract.type = type;
+	contract.goods = goods;
+	contract.deadline = deadline;
+	
+	return contract;
