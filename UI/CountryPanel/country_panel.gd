@@ -4,6 +4,8 @@ extends BasePanel
 
 const DEFAULT: Texture2D = preload("res://Assets/default.svg")
 
+@export var country: Country: set = update_country;
+
 @onready var flag: TextureRect = %Flag;
 @onready var country_name: Label = %CountryName;
 @onready var regime: LabeledField = %Regime;
@@ -12,10 +14,11 @@ const DEFAULT: Texture2D = preload("res://Assets/default.svg")
 @onready var gdp: LabeledField = %GDP;
 @onready var military_power: LabeledField = %MilitaryPower;
 
-func update_country(country: Country):
-	if country == null:
-		country = Country.new();
+func update_country(new_country: Country):
+	if new_country == null:
+		new_country = Country.new();
 	
+	country = new_country;
 	if !is_inside_tree(): return;
 	
 	flag.texture = country.flag;
@@ -38,3 +41,6 @@ func setup(data: Dictionary = {}):
 	var new_country: Country = data.get("country");
 	if new_country == null: return;
 	update_country(new_country);
+
+func get_close_data() -> Dictionary:
+	return {country=country};

@@ -1,11 +1,21 @@
 class_name PanelManager
 extends Control
 
-@export var panels: Dictionary[String, BasePanel] = {};
+var panels: Dictionary[String, BasePanel] = {};
 
 var open_panel: BasePanel = null;
 
+func load_panels() -> Dictionary[String, BasePanel]:
+	var panels: Dictionary[String, BasePanel] = {};
+	for child in get_children():
+		if child is not BasePanel: continue;
+		panels[child.panel_name] = child;
+	
+	return panels;
+
 func _ready() -> void:
+	panels = load_panels();
+	
 	UIEventBus.open_panel.connect(_on_open_panel);
 	UIEventBus.toggle_panel.connect(_on_toggle_panel);
 	UIEventBus.close_panel.connect(_on_close_panel);

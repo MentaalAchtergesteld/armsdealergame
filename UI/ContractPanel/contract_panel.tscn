@@ -5,7 +5,10 @@
 [ext_resource type="Script" uid="uid://b6a8bgknab2ka" path="res://UI/ContractPanel/contract_panel.gd" id="2_tjy5g"]
 
 [node name="ContractPanel" instance=ExtResource("1_keos6")]
+offset_left = 0.0
+offset_right = 448.0
 script = ExtResource("2_tjy5g")
+panel_name = "contract"
 
 [node name="Title" type="Label" parent="MarginContainer/Contents" index="0"]
 layout_mode = 2

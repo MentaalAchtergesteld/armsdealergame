@@ -38,24 +38,22 @@ func deselect():
 
 func _ready() -> void:
 	input_event.connect(_on_input_event);
-	UIEventBus.open_panel.connect(_on_panel_change);
-	UIEventBus.close_panel.connect(_on_panel_change);
+	UIEventBus.closed_panel.connect(_on_panel_closed);
 
-func _on_panel_change(panel_name: String, data: Dictionary = {}) -> void:
-	if panel_name != "country": return;
+func _on_panel_closed(panel_name: String, data: Dictionary):
 	var panel_country = data.get("country");
-	if panel_country != country:
+	if panel_country == country:
 		deselect();
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("ui_click"):
 		toggle_select();
-		
 		if selected:
 			UIEventBus.open_panel.emit("country", {country=country});
 		else:
 			UIEventBus.close_panel.emit("country");
 
+@warning_ignore("shadowed_variable")
 static func create(country: Country, polygons: Array[PackedVector2Array]) -> CountryRegion:
 	var region = CountryRegion.new();
 	region.country = country;

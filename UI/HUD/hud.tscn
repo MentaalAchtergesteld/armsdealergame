@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://c824gjka3b1f0"]
+[gd_scene load_steps=10 format=3 uid="uid://c824gjka3b1f0"]
 
 [ext_resource type="PackedScene" uid="uid://bvq2kh54va3gw" path="res://UI/CountryPanel/country_panel.tscn" id="1_ia7gp"]
 [ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="1_ing8j"]
 [ext_resource type="Script" uid="uid://bv5vmdiv0m5bi" path="res://UI/HUD/hud.gd" id="1_qdh7y"]
 [ext_resource type="Script" uid="uid://4qbb4777o4f6" path="res://Components/PanelManager/panel_manager.gd" id="3_radol"]
 [ext_resource type="PackedScene" uid="uid://cjdtrnplith8w" path="res://UI/ContractPanel/contract_panel.tscn" id="3_te8l2"]
+[ext_resource type="Texture2D" uid="uid://3h48x6hhd5gt" path="res://Assets/default.svg" id="5_db5ks"]
+[ext_resource type="Script" uid="uid://dfbthcphygry1" path="res://Resources/Country/country.gd" id="6_7sg86"]
+[ext_resource type="Script" uid="uid://g2bmvw0sh088" path="res://Resources/War/war.gd" id="7_gxdqe"]
+
+[sub_resource type="Resource" id="Resource_h1lrf"]
+script = ExtResource("6_7sg86")
+name = "Country"
+flag = ExtResource("5_db5ks")
+stability = 1.0
+regime = 0
+wars = Array[ExtResource("7_gxdqe")]([])
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qdh7y")
@@ -38,23 +49,18 @@ theme_override_fonts/font = ExtResource("1_ing8j")
 theme_override_font_sizes/font_size = 32
 text = "Contracts"
 
-[node name="PanelManager" type="Control" parent="VBoxContainer" node_paths=PackedStringArray("panels")]
+[node name="PanelManager" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 script = ExtResource("3_radol")
-panels = {
-"contract": NodePath("ContractPanel"),
-"country": NodePath("CountryPanel")
-}
 
 [node name="CountryPanel" parent="VBoxContainer/PanelManager" instance=ExtResource("1_ia7gp")]
 layout_mode = 2
 anchors_preset = 0
 anchor_bottom = 0.0
-offset_left = -448.0
-offset_right = 0.0
 offset_bottom = 1012.0
+country = SubResource("Resource_h1lrf")
 
 [node name="ContractPanel" parent="VBoxContainer/PanelManager" instance=ExtResource("3_te8l2")]
 layout_mode = 2
