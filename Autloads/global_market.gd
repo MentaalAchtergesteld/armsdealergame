@@ -40,10 +40,9 @@ func add_contract(contract: Contract) -> void:
 		
 		if winning_bid:
 			finalize_transaction(contract, winning_bid);
-		else:
-			GameTime.add_alarm(GameTime.current_time + randf_range(10.0, 70.0), func():
-				remove_contract(contract);
-			);
+		GameTime.add_alarm(GameTime.current_time + randf_range(10.0, 70.0), func():
+			remove_contract(contract);
+		);
 	
 	contract.contract_expired.connect(process_expired_contract);
 
