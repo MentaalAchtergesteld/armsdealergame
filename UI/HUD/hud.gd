@@ -10,8 +10,9 @@ func _on_sell_contract_pressed() -> void:
 	var contract = Contract.create(
 		country,
 		Contract.ContractType.Sell,
-		[],
-		randi_range(10, 1000)
+		{},
+		GameTime.current_time + randf_range(10, 1000),
+		randi_range(20, 300),
 	);
 	
 	GlobalMarket.add_contract(contract);
@@ -22,8 +23,9 @@ func _on_buy_contract_pressed() -> void:
 	var contract = Contract.create(
 		country,
 		Contract.ContractType.Buy,
-		[],
-		randi_range(10, 1000)
+		{},
+		GameTime.current_time + randf_range(10, 1000),
+		randi_range(20, 300),
 	);
 	
 	GlobalMarket.add_contract(contract);

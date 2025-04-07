@@ -11,7 +11,7 @@ const DEFAULT: Texture2D = preload("res://Assets/default.svg")
 @onready var regime: LabeledField = %Regime;
 @onready var stability: LabeledField = %Stability;
 @onready var population: LabeledField = %Population;
-@onready var gdp: LabeledField = %GDP;
+@onready var funds: LabeledField = %Funds;
 @onready var military_power: LabeledField = %MilitaryPower;
 
 func update_country(new_country: Country):
@@ -34,7 +34,7 @@ func update_country(new_country: Country):
 	
 	stability.set_field(country.stability * 100);
 	population.set_field(100);
-	gdp.set_field(100);
+	funds.set_field(country.funds);
 	military_power.set_field(100);
 
 func setup(data: Dictionary = {}):

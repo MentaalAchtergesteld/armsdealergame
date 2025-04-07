@@ -14,4 +14,7 @@ enum RegimeType {
 
 @export var regime: RegimeType = RegimeType.Democracy;
 
+@export var inventory: Dictionary = {"gun": 100};
+@export var funds: float = 100.0;
+
 @export var wars: Array[War];

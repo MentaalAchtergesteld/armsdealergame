@@ -14,9 +14,15 @@ name = "Country"
 flag = ExtResource("3_ktovx")
 stability = 1.0
 regime = 0
+inventory = {
+"gun": 100
+}
+funds = 100.0
 wars = Array[ExtResource("5_04eb3")]([])
 
 [node name="CountryPanel" instance=ExtResource("1_t7s01")]
+offset_left = 0.0
+offset_right = 448.0
 script = ExtResource("2_36tsi")
 country = SubResource("Resource_v207f")
 panel_name = "country"
@@ -65,23 +71,28 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 label = "Regime"
+value = "Democratic"
 
 [node name="Stability" parent="MarginContainer/Contents/SecondaryDetails" index="1" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Stability"
+value = "100.0"
 
 [node name="Population" parent="MarginContainer/Contents/SecondaryDetails" index="2" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Population"
+value = "10.0"
 
-[node name="GDP" parent="MarginContainer/Contents/SecondaryDetails" index="3" instance=ExtResource("4_gqc0b")]
+[node name="Funds" parent="MarginContainer/Contents/SecondaryDetails" index="3" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "GDP"
+label = "Funds"
+value = "100.0"
 
 [node name="MilitaryPower" parent="MarginContainer/Contents/SecondaryDetails" index="4" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Military Power"
+value = "10.0"

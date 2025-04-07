@@ -8,9 +8,10 @@ extends PanelContainer
 #		if is_inside_tree(): update_listing();
 
 @onready var issuer_flag: TextureRect = %IssuerFlag
-@onready var type: Label = %Type
-@onready var deadline: HBoxContainer = %Deadline
+@onready var type: LabeledField = %Type
+@onready var deadline: LabeledField = %Deadline
 @onready var is_expired: Label = %IsExpired
+@onready var base_price: LabeledField = %BasePrice
 
 func update_contract(new_contract: Contract):
 	if contract != null:
@@ -26,13 +27,13 @@ func update_contract(new_contract: Contract):
 	if !is_inside_tree(): return;
 	
 	issuer_flag.texture = contract.issuer.flag;
-	type.text = "Type: ";
+	tooltip_text = contract.issuer.name;
 	
 	match contract.type:
 		Contract.ContractType.Buy:
-			type.text += "Buy";
+			type.set_field("Buy");
 		Contract.ContractType.Sell:
-			type.text += "Sell";
+			type.set_field("Sell");
 	
 	deadline.set_field(contract.deadline);
 	
@@ -40,6 +41,8 @@ func update_contract(new_contract: Contract):
 		is_expired.text = "Expired";
 	else:
 		is_expired.text = "";
+	
+	base_price.set_field(contract.base_price);
 
 func _on_contract_expired(bids: Array[Bid]) -> void:
 	is_expired.text = "Expired";

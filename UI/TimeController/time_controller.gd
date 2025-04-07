@@ -33,4 +33,4 @@ func _on_resume_time_pressed() -> void:
 	GameTime.resume();
 
 func _on_time_speed_value_changed(value: float) -> void:
-	GameTime.time_speed = value*2;
+	GameTime.time_speed = pow(value, 2);

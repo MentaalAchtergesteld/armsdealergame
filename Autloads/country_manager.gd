@@ -3,10 +3,15 @@ extends Node
 const COUNTRY_DIR: String = "res://Resources/Country";
 
 var countries: Dictionary[String, Country] = {};
+var controllers: Array[CountryController] = [];
 
 func _ready() -> void:
 	#load_countries();
-	pass
+	GameTime.time_changed.connect(_on_time_changed);
+
+func _on_time_changed(current_time: float) -> void:
+	for controller in controllers:
+		controller.update();
 
 func load_countries():
 	var dir := DirAccess.open(COUNTRY_DIR);
@@ -72,6 +77,9 @@ func fetch_country_flag(country_code: String) -> ImageTexture:
 	var texture = ImageTexture.create_from_image(image);
 	return texture;
 
+func create_ai_country_controller(country: Country) -> AICountryController:
+	return AICountryController.create(country);
+
 func create_country_from_map_data(data: Dictionary):
 	var country = Country.new();
 	country.name = data.get("Name", "CountryName");
@@ -91,8 +99,6 @@ func create_country_from_map_data(data: Dictionary):
 	
 	country.stability = data.get("Stability", 0.5);
 	
-	countries[country.name] = country;
-	
 	return country;
 
 func create_country_region(feature: Dictionary, polygon_multiplier: float) -> CountryRegion:
@@ -102,6 +108,10 @@ func create_country_region(feature: Dictionary, polygon_multiplier: float) -> Co
 		var country = countries.get(country_name);
 		if country == null:
 			country = create_country_from_map_data(properties);
+			var controller = create_ai_country_controller(country);
+			
+			countries[country.name] = country;
+			controllers.append(controller);
 		
 		var geometry: Dictionary = feature.get("geometry", {});
 		if geometry.get("type", "") != "MultiPolygon":

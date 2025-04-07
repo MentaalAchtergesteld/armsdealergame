@@ -16,9 +16,9 @@ theme_override_font_sizes/font_size = 48
 text = "Contracts"
 horizontal_alignment = 1
 
-[node name="HSeperator" type="HSeparator" parent="MarginContainer/Contents" index="1"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Contents" index="1"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 32
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Contents" index="2"]
 layout_mode = 2
