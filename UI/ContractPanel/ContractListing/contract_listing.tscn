@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0grmpuocmj2a"]
+[gd_scene load_steps=10 format=3 uid="uid://d0grmpuocmj2a"]
 
 [ext_resource type="Script" uid="uid://jf5ilqgbl4i7" path="res://UI/ContractPanel/ContractListing/contract_listing.gd" id="1_ia0dc"]
 [ext_resource type="Script" uid="uid://c0ibhdtmg7sy2" path="res://Resources/Bid/bid.gd" id="2_s8c7s"]
+[ext_resource type="Script" uid="uid://bytkutsi2hjha" path="res://Resources/Good/good.gd" id="3_b1u8e"]
 [ext_resource type="Script" uid="uid://cdju0isdktypp" path="res://Resources/Contract/contract.gd" id="3_rtgby"]
 [ext_resource type="Texture2D" uid="uid://3h48x6hhd5gt" path="res://Assets/default.svg" id="3_ru6x5"]
 [ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="4_1eo77"]
@@ -10,10 +11,12 @@
 [sub_resource type="Resource" id="Resource_b1u8e"]
 script = ExtResource("3_rtgby")
 type = 0
-goods = []
+goods = Dictionary[ExtResource("3_b1u8e"), int]({})
 deadline = 0
-base_price = null
+base_price = 0.0
 bids = Array[ExtResource("2_s8c7s")]([])
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtgby"]
 
 [node name="ContractListing" type="PanelContainer"]
 offset_right = 40.0
@@ -30,17 +33,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CollapsedDetails" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 16
 
-[node name="FlagContainer" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="FlagContainer" type="Control" parent="MarginContainer/VBoxContainer/CollapsedDetails"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="IssuerFlag" type="TextureRect" parent="MarginContainer/HBoxContainer/FlagContainer"]
+[node name="IssuerFlag" type="TextureRect" parent="MarginContainer/VBoxContainer/CollapsedDetails/FlagContainer"]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 1
@@ -53,35 +59,35 @@ texture = ExtResource("3_ru6x5")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CollapsedDetails"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Type" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_kpxfh")]
+[node name="Type" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer" instance=ExtResource("4_kpxfh")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Type"
 value = "Buy"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Deadline" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_kpxfh")]
+[node name="Deadline" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/HBoxContainer" instance=ExtResource("4_kpxfh")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Deadline"
 value = "0"
 
-[node name="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/HBoxContainer/Deadline" index="0"]
 theme_override_font_sizes/font_size = 16
 text = "Deadline:"
 
-[node name="Field" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline" index="1"]
+[node name="Field" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/HBoxContainer/Deadline" index="1"]
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="IsExpired" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="IsExpired" type="Label" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
@@ -89,17 +95,69 @@ theme_override_colors/font_color = Color(0.9, 0.18, 0.18, 1)
 theme_override_fonts/font = ExtResource("4_1eo77")
 text = "Expired"
 
-[node name="BasePrice" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_kpxfh")]
+[node name="BasePrice" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer" instance=ExtResource("4_kpxfh")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Price"
 
-[node name="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/BasePrice" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/BasePrice" index="0"]
 theme_override_font_sizes/font_size = 16
 text = "Price:"
 
-[node name="Field" parent="MarginContainer/HBoxContainer/VBoxContainer/BasePrice" index="1"]
+[node name="Field" parent="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/BasePrice" index="1"]
 theme_override_font_sizes/font_size = 16
 
-[editable path="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Deadline"]
-[editable path="MarginContainer/HBoxContainer/VBoxContainer/BasePrice"]
+[node name="ExpandedWrapper" type="Control" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DetailsBackground" type="PanelContainer" parent="MarginContainer/VBoxContainer/ExpandedWrapper"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpandedDetails" type="MarginContainer" parent="MarginContainer/VBoxContainer/ExpandedWrapper"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ExpandedWrapper/ExpandedDetails"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ExpandedWrapper/ExpandedDetails/VBoxContainer"]
+layout_mode = 2
+text = "Goods"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/ExpandedWrapper/ExpandedDetails/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GoodsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ExpandedWrapper/ExpandedDetails/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DetailsButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtgby")
+flat = true
+
+[connection signal="pressed" from="DetailsButton" to="." method="_on_details_button_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/HBoxContainer/Deadline"]
+[editable path="MarginContainer/VBoxContainer/CollapsedDetails/VBoxContainer/BasePrice"]

@@ -1,6 +1,8 @@
 class_name Country
 extends Resource
 
+const GUN = preload("res://Resources/Good/gun.tres")
+
 enum RegimeType {
 	Democracy,
 	Autocracy,
@@ -14,7 +16,7 @@ enum RegimeType {
 
 @export var regime: RegimeType = RegimeType.Democracy;
 
-@export var inventory: Dictionary = {"gun": 100};
+@export var inventory: Dictionary[Good, int] = {GUN: 100};
 @export var funds: float = 100.0;
 
 @export var wars: Array[War];

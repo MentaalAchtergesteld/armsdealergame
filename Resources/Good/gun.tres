@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Good" load_steps=3 format=3 uid="uid://bq28dd2dyfs1e"]
+
+[ext_resource type="Texture2D" uid="uid://btdt6u8bofbsc" path="res://Assets/GoodIcons/assault_rifle.svg" id="1_7sxo5"]
+[ext_resource type="Script" uid="uid://bytkutsi2hjha" path="res://Resources/Good/good.gd" id="1_i7ybv"]
+
+[resource]
+script = ExtResource("1_i7ybv")
+name = "Gun"
+plural = "Guns"
+description = "Guns! Pew pew!"
+icon = ExtResource("1_7sxo5")
+metadata/_custom_type_script = "uid://bytkutsi2hjha"

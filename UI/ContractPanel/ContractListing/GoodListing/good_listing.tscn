@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuwkj4ipyg1dl"]
+
+[ext_resource type="Script" uid="uid://bcvqyu36ktlca" path="res://UI/ContractPanel/ContractListing/GoodListing/good_listing.gd" id="1_gaki7"]
+[ext_resource type="Resource" uid="uid://bq28dd2dyfs1e" path="res://Resources/Good/gun.tres" id="2_7lb2c"]
+[ext_resource type="Texture2D" uid="uid://btdt6u8bofbsc" path="res://Assets/GoodIcons/assault_rifle.svg" id="3_pcrkl"]
+
+[node name="GoodListing" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+script = ExtResource("1_gaki7")
+good = ExtResource("2_7lb2c")
+quantity = 2
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_pcrkl")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 2
+text = "2"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "Guns"

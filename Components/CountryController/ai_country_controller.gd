@@ -36,7 +36,7 @@ func try_create_contract():
 	if has_active_contract: return;
 	
 	var item_to_sell := pick_item_to_sell();
-	if item_to_sell == "": return;
+	if item_to_sell == null: return;
 	
 	var max_to_sell = country.inventory[item_to_sell] - min_item_stock;
 	var amount_to_sell = randi_range(min(5.0, max_to_sell), max_to_sell);
@@ -47,7 +47,7 @@ func try_create_contract():
 	var contract = Contract.create(
 		country,
 		Contract.ContractType.Sell,
-		{item_to_sell: max_item_stock},
+		{item_to_sell: amount_to_sell},
 		deadline,
 		price
 	);
@@ -57,15 +57,15 @@ func try_create_contract():
 	
 	contract.contract_expired.connect(func(_bids): has_active_contract = false);
 
-func pick_item_to_sell() -> String:
+func pick_item_to_sell() -> Good:
 	var options = country.inventory.keys().filter(func(key):
 		return country.inventory[key] > max_item_stock;
 	);
 	
-	if options.is_empty(): return "";
+	if options.is_empty(): return null;
 	return options.pick_random();
 
-func calculate_good_price(item: String, amount: int) -> float:
+func calculate_good_price(item: Good, amount: int) -> float:
 	var random = randf_range(1.0, 2.5);
 	var limited = round(random * 100.0) / 100.0;
 	return amount * limited;

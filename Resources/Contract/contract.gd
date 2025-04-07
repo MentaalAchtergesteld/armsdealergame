@@ -7,7 +7,7 @@ enum ContractType { Buy, Sell };
 
 @export var type: ContractType = ContractType.Buy;
 @export var issuer: Country;
-@export var goods: Dictionary[String, int] = {};
+@export var goods: Dictionary[Good, int] = {};
 @export var deadline: int = 0;
 @export var base_price: float = 0;
 @export var bids: Array[Bid] = [];
@@ -33,7 +33,7 @@ func get_winning_bid() -> Bid:
 static func create(
 	issuer: Country,
 	type: ContractType,
-	goods: Dictionary[String, int],
+	goods: Dictionary[Good, int],
 	deadline: int,
 	base_price: float,
 ) -> Contract:
