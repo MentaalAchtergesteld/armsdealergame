@@ -1,3 +1,4 @@
+@tool
 extends HBoxContainer
 
 @onready var time_speed: ProgressBar = %TimeSpeed
@@ -10,6 +11,18 @@ func _ready() -> void:
 	GameTime.time_changed.connect(_on_time_changed);
 	GameTime.time_paused.connect(_on_time_paused);
 	GameTime.time_resumed.connect(_on_time_resumed);
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_time"):
+		if GameTime.paused:
+			GameTime.resume();
+		else:
+			GameTime.pause();
+	
+	if event.is_action_pressed("increase_time_speed"):
+		time_speed.value += 1;
+	elif event.is_action_pressed("decrease_time_speed"):
+		time_speed.value -= 1;
 
 func _on_time_changed(new_time: float) -> void:
 	current_time.text = "%.2f" % new_time
