@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://jur127amht0s"]
+
+[ext_resource type="Script" uid="uid://dh1q4g7xsiam5" path="res://UI/PlayerCountryButton/player_country_button.gd" id="1_4lfr5"]
+
+[node name="PlayerCountryButton" type="TextureRect"]
+expand_mode = 2
+script = ExtResource("1_4lfr5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

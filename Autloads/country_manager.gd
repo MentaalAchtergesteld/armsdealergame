@@ -1,6 +1,9 @@
 extends Node
 
 const COUNTRY_DIR: String = "res://Resources/Country";
+const DEFAULT_FLAG: Texture2D = preload("res://Assets/default.svg");
+
+var player_country: Country;
 
 var countries: Dictionary[String, Country] = {};
 var controllers: Array[CountryController] = [];
@@ -8,6 +11,9 @@ var controllers: Array[CountryController] = [];
 func _ready() -> void:
 	#load_countries();
 	GameTime.time_changed.connect(_on_time_changed);
+	
+	player_country = Country.create("Player", DEFAULT_FLAG, Country.RegimeType.Democracy);
+	countries[player_country.name] = player_country;
 
 func _on_time_changed(current_time: float) -> void:
 	for controller in controllers:
@@ -81,22 +87,25 @@ func create_ai_country_controller(country: Country) -> AICountryController:
 	return AICountryController.create(country);
 
 func create_country_from_map_data(data: Dictionary):
-	var country = Country.new();
-	country.name = data.get("Name", "CountryName");
+	var country_name = data.get("Name", "CountryName");
 	var flag_path = "res://Assets/" + data.get("FlagPath", "default.svg");
-	if ResourceLoader.exists(flag_path):
-		country.flag = load(flag_path);
-	else:
-		country.flag = load("res://Assets/default.svg");
 	
+	var country_flag;
+	if ResourceLoader.exists(flag_path):
+		country_flag = load(flag_path);
+	else:
+		country_flag = DEFAULT_FLAG;
+	
+	var country_regime;
 	match data.get("Regime", "Democracy"):
 		"Democracy":
-			country.regime = Country.RegimeType.Democracy;
+			country_regime = Country.RegimeType.Democracy;
 		"Autocracy":
-			country.regime = Country.RegimeType.Autocracy;
+			country_regime = Country.RegimeType.Autocracy;
 		"Oligarchy":
-			country.regime = Country.RegimeType.Oligarchy;
+			country_regime = Country.RegimeType.Oligarchy;
 	
+	var country = Country.create(country_name, country_flag, country_regime);
 	country.stability = data.get("Stability", 0.5);
 	
 	return country;

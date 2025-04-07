@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://c824gjka3b1f0"]
+[gd_scene load_steps=14 format=3 uid="uid://c824gjka3b1f0"]
 
 [ext_resource type="PackedScene" uid="uid://bvq2kh54va3gw" path="res://UI/CountryPanel/country_panel.tscn" id="1_ia7gp"]
 [ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://Assets/Fonts/RobotoCondensed-VariableFont_wght.ttf" id="1_ing8j"]
 [ext_resource type="Script" uid="uid://bv5vmdiv0m5bi" path="res://UI/HUD/hud.gd" id="1_qdh7y"]
+[ext_resource type="PackedScene" uid="uid://jur127amht0s" path="res://UI/PlayerCountryButton/player_country_button.tscn" id="2_4h73s"]
 [ext_resource type="PackedScene" uid="uid://d1lqd14lsxk0k" path="res://UI/TimeController/time_controller.tscn" id="3_7sg86"]
 [ext_resource type="Script" uid="uid://4qbb4777o4f6" path="res://Components/PanelManager/panel_manager.gd" id="3_radol"]
 [ext_resource type="PackedScene" uid="uid://cjdtrnplith8w" path="res://UI/ContractPanel/contract_panel.tscn" id="3_te8l2"]
 [ext_resource type="Texture2D" uid="uid://3h48x6hhd5gt" path="res://Assets/default.svg" id="5_db5ks"]
 [ext_resource type="Script" uid="uid://dfbthcphygry1" path="res://Resources/Country/country.gd" id="6_7sg86"]
 [ext_resource type="Script" uid="uid://g2bmvw0sh088" path="res://Resources/War/war.gd" id="7_gxdqe"]
+[ext_resource type="Script" uid="uid://bytkutsi2hjha" path="res://Resources/Good/good.gd" id="7_h1lrf"]
+[ext_resource type="Resource" uid="uid://bq28dd2dyfs1e" path="res://Resources/Good/gun.tres" id="8_4h73s"]
 
 [sub_resource type="Resource" id="Resource_h1lrf"]
 script = ExtResource("6_7sg86")
@@ -16,6 +19,10 @@ name = "Country"
 flag = ExtResource("5_db5ks")
 stability = 1.0
 regime = 0
+inventory = Dictionary[ExtResource("7_h1lrf"), int]({
+ExtResource("8_4h73s"): 100
+})
+funds = 100.0
 wars = Array[ExtResource("7_gxdqe")]([])
 
 [node name="HUD" type="CanvasLayer"]
@@ -44,6 +51,10 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
+
+[node name="PlayerCountryFlag" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_4h73s")]
+layout_mode = 2
+texture = ExtResource("5_db5ks")
 
 [node name="ContractsButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -76,19 +87,17 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("3_radol")
 
 [node name="CountryPanel" parent="VBoxContainer/PanelManager" instance=ExtResource("1_ia7gp")]
-layout_mode = 2
-anchors_preset = 0
-anchor_bottom = 0.0
-offset_bottom = 1012.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+offset_left = -448.0
+offset_right = 0.0
+grow_horizontal = 2
 country = SubResource("Resource_h1lrf")
 
 [node name="ContractPanel" parent="VBoxContainer/PanelManager" instance=ExtResource("3_te8l2")]
 layout_mode = 2
 anchors_preset = 0
-anchor_bottom = 0.0
-offset_left = -448.0
-offset_right = 0.0
-offset_bottom = 1012.0
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/ContractsButton" to="." method="_on_contracts_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/ContractCreation/SellContract" to="." method="_on_sell_contract_pressed"]

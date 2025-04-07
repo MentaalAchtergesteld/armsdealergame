@@ -1,14 +1,14 @@
 class_name HUD
 extends CanvasLayer
 
+@onready var player_country_flag: TextureRect = $VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerCountryFlag
+
 func _on_contracts_button_pressed() -> void:
 	UIEventBus.toggle_panel.emit("contract", {});
 
 func _on_sell_contract_pressed() -> void:
-	var country = CountryManager.countries.values().pick_random();
-	
 	var contract = Contract.create(
-		country,
+		CountryManager.player_country,
 		Contract.ContractType.Sell,
 		{},
 		GameTime.current_time + randf_range(10, 1000),
@@ -18,10 +18,8 @@ func _on_sell_contract_pressed() -> void:
 	GlobalMarket.add_contract(contract);
 
 func _on_buy_contract_pressed() -> void:
-	var country = CountryManager.countries.values().pick_random();
-	
 	var contract = Contract.create(
-		country,
+		CountryManager.player_country,
 		Contract.ContractType.Buy,
 		{},
 		GameTime.current_time + randf_range(10, 1000),

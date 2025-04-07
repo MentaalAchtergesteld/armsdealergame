@@ -23,6 +23,8 @@ funds = 100.0
 wars = Array[ExtResource("5_04eb3")]([])
 
 [node name="CountryPanel" instance=ExtResource("1_t7s01")]
+offset_left = 0.0
+offset_right = 448.0
 script = ExtResource("2_36tsi")
 country = SubResource("Resource_v207f")
 panel_name = "country"

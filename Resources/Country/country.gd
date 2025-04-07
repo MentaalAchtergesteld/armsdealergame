@@ -20,3 +20,10 @@ enum RegimeType {
 @export var funds: float = 100.0;
 
 @export var wars: Array[War];
+
+static func create(name: String, flag: Texture2D, regime: RegimeType) -> Country:
+	var country = Country.new();
+	country.name = name;
+	country.flag = flag;
+	country.regime = regime;
+	return country;
