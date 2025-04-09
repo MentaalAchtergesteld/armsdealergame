@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvq2kh54va3gw"]
+[gd_scene load_steps=13 format=3 uid="uid://bvq2kh54va3gw"]
 
 [ext_resource type="PackedScene" uid="uid://bnlnfejyhrq23" path="res://UI/BasePanel/base_panel.tscn" id="1_t7s01"]
 [ext_resource type="Script" uid="uid://dvw8smuqagrv3" path="res://UI/CountryPanel/country_panel.gd" id="2_36tsi"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dfbthcphygry1" path="res://Resources/Country/country.gd" id="4_y3oxm"]
 [ext_resource type="Script" uid="uid://g2bmvw0sh088" path="res://Resources/War/war.gd" id="5_04eb3"]
 [ext_resource type="Resource" uid="uid://bq28dd2dyfs1e" path="res://Resources/Good/gun.tres" id="5_d8ds8"]
+[ext_resource type="PackedScene" uid="uid://dnhu202luv4pp" path="res://UI/InventoryList/inventory_list.tscn" id="10_d8ds8"]
 
 [sub_resource type="Resource" id="Resource_v207f"]
 script = ExtResource("4_y3oxm")
@@ -22,9 +23,14 @@ ExtResource("5_d8ds8"): 100
 funds = 100.0
 wars = Array[ExtResource("5_04eb3")]([])
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v207f"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="CountryPanel" instance=ExtResource("1_t7s01")]
-offset_left = 0.0
-offset_right = 448.0
 script = ExtResource("2_36tsi")
 country = SubResource("Resource_v207f")
 panel_name = "country"
@@ -66,35 +72,68 @@ text_overrun_behavior = 3
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="SecondaryDetails" type="VBoxContainer" parent="MarginContainer/Contents" index="2"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/Contents" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_36tsi")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/panel = SubResource("StyleBoxFlat_v207f")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Politics" type="MarginContainer" parent="MarginContainer/Contents/TabContainer" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Contents/TabContainer/Politics" index="0"]
 layout_mode = 2
 
-[node name="Regime" parent="MarginContainer/Contents/SecondaryDetails" index="0" instance=ExtResource("4_gqc0b")]
+[node name="Regime" parent="MarginContainer/Contents/TabContainer/Politics/VBoxContainer" index="0" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Regime"
 value = "Democratic"
 
-[node name="Stability" parent="MarginContainer/Contents/SecondaryDetails" index="1" instance=ExtResource("4_gqc0b")]
+[node name="Stability" parent="MarginContainer/Contents/TabContainer/Politics/VBoxContainer" index="1" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Stability"
 value = "100.0"
 
-[node name="Population" parent="MarginContainer/Contents/SecondaryDetails" index="2" instance=ExtResource("4_gqc0b")]
+[node name="Population" parent="MarginContainer/Contents/TabContainer/Politics/VBoxContainer" index="2" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Population"
 value = "10.0"
 
-[node name="Funds" parent="MarginContainer/Contents/SecondaryDetails" index="3" instance=ExtResource("4_gqc0b")]
+[node name="Funds" parent="MarginContainer/Contents/TabContainer/Politics/VBoxContainer" index="3" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Funds"
 value = "100.0"
 
-[node name="MilitaryPower" parent="MarginContainer/Contents/SecondaryDetails" index="4" instance=ExtResource("4_gqc0b")]
+[node name="MilitaryPower" parent="MarginContainer/Contents/TabContainer/Politics/VBoxContainer" index="4" instance=ExtResource("4_gqc0b")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Military Power"
 value = "10.0"
+
+[node name="Inventory" type="MarginContainer" parent="MarginContainer/Contents/TabContainer" index="2"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_tab_index = 1
+
+[node name="InventoryList" parent="MarginContainer/Contents/TabContainer/Inventory" index="0" instance=ExtResource("10_d8ds8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Close" parent="MarginContainer/Contents" index="3"]
+size_flags_vertical = 8

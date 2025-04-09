@@ -16,7 +16,7 @@ text = "-"
 
 [node name="TimeSpeed" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-self_modulate = Color(0.283333, 1, 0, 1)
+self_modulate = Color(100, -9900, -9900, 1)
 custom_minimum_size = Vector2(92, 0)
 layout_mode = 2
 size_flags_horizontal = 6

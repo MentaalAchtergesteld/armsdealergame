@@ -31,7 +31,7 @@ func _ready() -> void:
 	update_good(good);
 	update_quantity(quantity);
 
-const GOOD_LISTING = preload("res://UI/ContractPanel/ContractListing/GoodListing/good_listing.tscn")
+const GOOD_LISTING = preload("res://UI/GoodListing/good_listing.tscn")
 
 static func create(good: Good, quantity: int) -> GoodListing:
 	var listing = GOOD_LISTING.instantiate();
