@@ -11,16 +11,13 @@ config_version=5
 [application]
 
 config/name="ArmsDealerGame"
-run/main_scene="uid://cq3o6knkcgkqg"
+run/main_scene="uid://oo8rwyat8nxq"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Assets/default.svg"
+config/icon="res://assets/good_icons/default.svg"
 
 [autoload]
 
-CountryManager="*res://Autloads/country_manager.gd"
-UIEventBus="*res://Autloads/ui_event_bus.gd"
-GlobalMarket="*res://Autloads/global_market.gd"
-GameTime="*res://Autloads/game_time.gd"
+UIEventBus="*res://autoloads/ui_event_bus.gd"
 
 [display]
 
