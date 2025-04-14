@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c254l47uj73go"]
+[gd_scene load_steps=2 format=3 uid="uid://c254l47uj73go"]
+
+[ext_resource type="PackedScene" uid="uid://cbemg2rrty16m" path="res://ui/player_country_button/player_country_button.tscn" id="1_klgnq"]
 
 [node name="Toolbar" type="PanelContainer"]
 anchors_preset = 10
@@ -15,6 +17,15 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-text = "Toolbar"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+stretch_mode = 1
+alignment_horizontal = 0
+alignment_vertical = 0
+
+[node name="PlayerCountryButton" parent="MarginContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_klgnq")]
+layout_mode = 2

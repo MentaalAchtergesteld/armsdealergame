@@ -48,7 +48,7 @@ layout_mode = 2
 
 [node name="Toolbar" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_4d6w6")]
 z_index = 100
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 0
 
@@ -60,6 +60,7 @@ script = ExtResource("3_e0nub")
 metadata/_custom_type_script = "uid://4qbb4777o4f6"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelManager"]
+visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
