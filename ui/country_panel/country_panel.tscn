@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://cddekuvq64p1o"]
+
+[ext_resource type="PackedScene" uid="uid://ygnm3sln78hs" path="res://ui/base_panel/base_panel.tscn" id="1_3gcxq"]
+[ext_resource type="Texture2D" uid="uid://big3m5upxm1n8" path="res://assets/flags/albania.svg" id="2_nhu6i"]
+[ext_resource type="Script" uid="uid://drxl4hdttedjf" path="res://ui/country_panel/country_panel.gd" id="2_rfsxr"]
+[ext_resource type="Theme" uid="uid://d1h7mh8cch8hl" path="res://ui/base_panel/content_theme.tres" id="3_pfsgc"]
+[ext_resource type="PackedScene" uid="uid://v3bo14in7d7k" path="res://ui/labeled_value/labeled_value.tscn" id="3_v6x06"]
+
+[node name="CountryPanel" instance=ExtResource("1_3gcxq")]
+script = ExtResource("2_rfsxr")
+panel_name = "country"
+
+[node name="PanelTitle" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" index="0"]
+text = "Country"
+
+[node name="Content" parent="MarginContainer/VBoxContainer" index="2"]
+theme = ExtResource("3_pfsgc")
+theme_override_constants/margin_left = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Flag&Name" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Flag&Name" index="0"]
+layout_mode = 2
+
+[node name="Flag&Name" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Flag&Name/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="CountryFlag" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Flag&Name/MarginContainer/Flag&Name" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_nhu6i")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CountryName" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Flag&Name/MarginContainer/Flag&Name" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Albania"
+text_overrun_behavior = 3
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+
+[node name="Political" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("3_pfsgc")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political" index="0"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Regime" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="0" instance=ExtResource("3_v6x06")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_pfsgc")
+theme_type_variation = &"LabeledField"
+label = "Regime"
+
+[node name="Stability" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_v6x06")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_pfsgc")
+theme_type_variation = &"LabeledField"
+label = "Stability"
+
+[node name="Funds" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="2" instance=ExtResource("3_v6x06")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_pfsgc")
+theme_type_variation = &"LabeledField"
+label = "Funds"
+
+[node name="Inventory" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer" index="2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

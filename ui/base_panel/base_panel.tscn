@@ -1,7 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ygnm3sln78hs"]
+[gd_scene load_steps=9 format=3 uid="uid://ygnm3sln78hs"]
 
 [ext_resource type="Theme" uid="uid://gp455ngd4uoi" path="res://ui/main_theme.tres" id="1_po106"]
 [ext_resource type="Script" uid="uid://ctms4scwhkdt5" path="res://ui/base_panel/base_panel.gd" id="2_3mt3b"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3mt3b"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_khr3g"]
+events = [SubResource("InputEventKey_3mt3b")]
 
 [sub_resource type="Animation" id="Animation_puvje"]
 length = 0.001
@@ -135,7 +142,8 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(512, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 512.0
+offset_left = -1024.0
+offset_right = -512.0
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("1_po106")
@@ -147,7 +155,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -170,9 +178,8 @@ text_overrun_behavior = 3
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Header/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+shortcut = SubResource("Shortcut_khr3g")
 text = "Close"
-icon_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -183,6 +190,7 @@ theme_override_constants/separation = 4
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

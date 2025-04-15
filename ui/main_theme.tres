@@ -10,5 +10,6 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [resource]
+default_font = ExtResource("1_g1fjd")
 Label/fonts/font = ExtResource("1_g1fjd")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_e0nub")

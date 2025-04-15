@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dser3fa16vefn" path="res://ui/hud/hud.gd" id="1_xmswo"]
 [ext_resource type="PackedScene" uid="uid://c254l47uj73go" path="res://ui/toolbar/toolbar.tscn" id="2_4d6w6"]
 [ext_resource type="Script" uid="uid://4qbb4777o4f6" path="res://components/panel_manager/panel_manager.gd" id="3_e0nub"]
-[ext_resource type="PackedScene" uid="uid://ygnm3sln78hs" path="res://ui/base_panel/base_panel.tscn" id="5_imuuq"]
+[ext_resource type="PackedScene" uid="uid://cddekuvq64p1o" path="res://ui/country_panel/country_panel.tscn" id="5_imuuq"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -47,6 +47,7 @@ size_flags_vertical = 3
 script = ExtResource("3_e0nub")
 metadata/_custom_type_script = "uid://4qbb4777o4f6"
 
-[node name="BasePanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("5_imuuq")]
+[node name="CountryPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("5_imuuq")]
 layout_mode = 1
-panel_name = "country"
+offset_left = 0.0
+offset_right = 512.0

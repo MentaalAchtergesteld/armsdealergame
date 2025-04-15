@@ -13,6 +13,7 @@ signal panel_closed;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return;
 	animation_player.play("RESET");
 
 # Function to overwrite for inherited scenes.
