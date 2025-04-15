@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqcwp5qxn6hx6"]
+
+[ext_resource type="Script" uid="uid://rep7b0wstkqc" path="res://ui/time_controls/time_controls.gd" id="1_mr15i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr15i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ecjp"]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="TimeControls" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 36)
+offset_right = 153.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_mr15i")
+base_speed = 5.0
+paused_color = Color(1, 0, 0, 1)
+resumed_color = Color(0, 0.7, 0.0933334, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DecreaseSpeed" type="Button" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "<<"
+
+[node name="TimeSpeed" type="ProgressBar" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_mr15i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ecjp")
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+show_percentage = false
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/HBoxContainer/TimeSpeed"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="IncreaseSpeed" type="Button" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = ">>"
+
+[node name="PauseResume" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Pause"
+
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/DecreaseSpeed" to="." method="_on_decrease_speed_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/IncreaseSpeed" to="." method="_on_increase_speed_pressed"]
+[connection signal="pressed" from="HBoxContainer/PauseResume" to="." method="_on_pause_resume_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://oo8rwyat8nxq"]
+[gd_scene load_steps=7 format=3 uid="uid://oo8rwyat8nxq"]
 
 [ext_resource type="Script" uid="uid://gw84p6cs70ch" path="res://components/game_data_loader/game_data_loader.gd" id="1_700et"]
 [ext_resource type="Script" uid="uid://jt1hvwpvimuo" path="res://components/country_manager/country_manager.gd" id="2_o347i"]
 [ext_resource type="Script" uid="uid://dp4rsqargivda" path="res://components/map/map.gd" id="3_7ulqd"]
+[ext_resource type="Script" uid="uid://4nfiuvp55ii0" path="res://components/game_time/game_time.gd" id="4_7ulqd"]
 [ext_resource type="PackedScene" uid="uid://d0eqn1ka10bu7" path="res://entities/player_camera/player_camera.tscn" id="4_wedpv"]
 [ext_resource type="PackedScene" uid="uid://bkmhh4xifuxj" path="res://ui/hud/hud.tscn" id="5_o347i"]
 
@@ -24,6 +25,7 @@ metadata/_custom_type_script = "uid://gw84p6cs70ch"
 script = ExtResource("2_o347i")
 
 [node name="GameTime" type="Node" parent="."]
+script = ExtResource("4_7ulqd")
 
 [node name="GlobalMarket" type="Node" parent="."]
 

@@ -10,6 +10,7 @@ func load_panels() -> void:
 		if child is not BasePanel: continue;
 		panels[child.panel_name] = child;
 		child.panel_closed.connect(_on_panel_closed.bind(child));
+		child.panel_opened.connect(_on_panel_opened.bind(child));
 
 func _ready() -> void:
 	load_panels();
@@ -44,3 +45,7 @@ func _on_close_panel(panel_name: String) -> void:
 func _on_panel_closed(panel: BasePanel) -> void:
 	if open_panel == panel:
 		open_panel = null;
+	UIEventBus.closed_panel.emit(panel);
+
+func _on_panel_opened(panel: BasePanel) -> void:
+	UIEventBus.opened_panel.emit(panel);
