@@ -1,6 +1,13 @@
 class_name Country
 extends Resource
 
+signal name_changed(name: String);
+signal flag_changed(flag: Texture2D);
+signal stability_changed(stability: float);
+signal regime_changed(regime: RegimeType);
+signal funds_changed(funds: float);
+signal inventory_changed(inventory: Dictionary[Item, int]);
+
 const DEFAULT_FLAG_PATH: String = "res://assets/flags/default.svg";
 const DEFAULT_FLAG := preload(DEFAULT_FLAG_PATH);
 
@@ -12,16 +19,36 @@ enum RegimeType {
 	Monarchy,
 };
 
-@export var name: String = "CountryName";
-@export var flag: Texture2D = DEFAULT_FLAG;
+@export var name: String = "CountryName":
+	set(value):
+		name = value;
+		name_changed.emit(name);
+@export var flag: Texture2D = DEFAULT_FLAG:
+	set(value):
+		flag = value;
+		flag_changed.emit(flag);
 
-@export_range(0.0, 1.0, 0.01) var stability: float = 0.5;
-@export var regime: RegimeType = RegimeType.Democracy;
+@export_range(0.0, 1.0, 0.01) var stability: float = 0.5:
+	set(value):
+		stability = max(0, min(value, 1.0));
+		stability_changed.emit(stability);
 
-@export var funds: float = 100.0;
-@export var inventory: Dictionary[Item, int] = {};
+@export var regime: RegimeType = RegimeType.Democracy:
+	set(value):
+		regime = value;
+		regime_changed.emit(regime);
+
+@export var funds: float = 100.0:
+	set(value):
+		funds = value;
+		funds_changed.emit(funds);
+@export var inventory: Dictionary[Item, int] = {}:
+	set(value):
+		inventory = value;
+		inventory_changed.emit(inventory);
 
 var regions: Array[CountryRegion];
+
 
 static func load_flag_from_path(path: String) -> Texture2D:
 	var flag_image := load(path);

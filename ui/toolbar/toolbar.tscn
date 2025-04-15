@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c254l47uj73go"]
+[gd_scene load_steps=3 format=3 uid="uid://c254l47uj73go"]
 
+[ext_resource type="Theme" uid="uid://gp455ngd4uoi" path="res://ui/main_theme.tres" id="1_ir04u"]
 [ext_resource type="PackedScene" uid="uid://cbemg2rrty16m" path="res://ui/player_country_button/player_country_button.tscn" id="1_klgnq"]
 
 [node name="Toolbar" type="PanelContainer"]
@@ -9,23 +10,18 @@ offset_bottom = 31.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
+theme = ExtResource("1_ir04u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 12
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 12
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/HBoxContainer"]
+[node name="PlayerCountryButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_klgnq")]
 layout_mode = 2
-size_flags_horizontal = 0
-stretch_mode = 1
-alignment_horizontal = 0
-alignment_vertical = 0
-
-[node name="PlayerCountryButton" parent="MarginContainer/HBoxContainer/AspectRatioContainer" instance=ExtResource("1_klgnq")]
-layout_mode = 2
+size_flags_horizontal = 2

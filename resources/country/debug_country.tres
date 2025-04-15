@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Country" load_steps=4 format=3 uid="uid://nj2jx3haqafy"]
+
+[ext_resource type="Texture2D" uid="uid://dgr6ioq2n1pkv" path="res://assets/flags/default.svg" id="1_mo172"]
+[ext_resource type="Script" uid="uid://c76jbymmio2qn" path="res://resources/item/item.gd" id="2_k6ksk"]
+[ext_resource type="Script" uid="uid://dno6vvo2bnu85" path="res://resources/country/country.gd" id="3_86302"]
+
+[resource]
+script = ExtResource("3_86302")
+name = "CountryName"
+flag = ExtResource("1_mo172")
+stability = 0.5
+regime = 0
+funds = 100.0
+inventory = Dictionary[ExtResource("2_k6ksk"), int]({})
+metadata/_custom_type_script = "uid://dno6vvo2bnu85"

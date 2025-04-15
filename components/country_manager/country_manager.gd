@@ -28,6 +28,7 @@ func create_player_country() -> void:
 	add_country(country);
 	player_country = country;
 	player_country_created.emit(player_country);
+	EventBus.player_country_created.emit(player_country);
 
 func _ready() -> void:
 	create_player_country();

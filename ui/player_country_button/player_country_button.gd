@@ -1,24 +1,25 @@
 class_name PlayerCountryButton
-extends Button
+extends TextureRect
 
-@onready var texture_rect: TextureRect = $TextureRect;
+@export var player_country: Country:
+	set(value):
+		if player_country and player_country.flag_changed:
+			player_country.flag_changed.disconnect(update_flag);
+		
+		player_country = value;
+		
+		if player_country:
+			player_country.flag_changed.connect(update_flag);
+			update_flag(player_country.flag);
 
-var player_country: Country;
+func update_flag(flag: Texture2D) -> void:
+	texture = flag;
 
-func update_country_data() -> void:
-	texture_rect.texture = player_country.flag;
+func _on_player_country_created(country: Country) -> void:
+	player_country = country;
+
+func _ready() -> void:
+	EventBus.player_country_created.connect(_on_player_country_created);
 
 func _on_button_pressed() -> void:
 	UIEventBus.toggle_panel.emit("country", {country=player_country});
-
-func _on_update_player_country(country: Country) -> void:
-	player_country = country;
-	update_country_data();
-
-func _on_update_country_data(country: Country) -> void:
-	if country != player_country: return;
-	update_country_data();
-
-func _ready() -> void:
-	UIEventBus.update_player_country.connect(_on_update_player_country);
-	UIEventBus.update_country_data.connect(_on_update_country_data);

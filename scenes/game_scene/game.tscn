@@ -8,6 +8,10 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_o347i")]
+
 [node name="GameDataLoader" type="Node" parent="." node_paths=PackedStringArray("country_manager", "map")]
 script = ExtResource("1_700et")
 map_path = "res://assets/maps/EuropeContinental.geojson"
@@ -29,7 +33,3 @@ script = ExtResource("3_7ulqd")
 [node name="PlayerCamera" parent="." instance=ExtResource("4_wedpv")]
 position = Vector2(302, -1170)
 max_speed = 500.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_o347i")]
