@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkmhh4xifuxj"]
+[gd_scene load_steps=7 format=3 uid="uid://bkmhh4xifuxj"]
 
 [ext_resource type="Theme" uid="uid://gp455ngd4uoi" path="res://ui/main_theme.tres" id="1_w75iv"]
 [ext_resource type="Script" uid="uid://dser3fa16vefn" path="res://ui/hud/hud.gd" id="1_xmswo"]
 [ext_resource type="PackedScene" uid="uid://c254l47uj73go" path="res://ui/toolbar/toolbar.tscn" id="2_4d6w6"]
 [ext_resource type="Script" uid="uid://4qbb4777o4f6" path="res://components/panel_manager/panel_manager.gd" id="3_e0nub"]
 [ext_resource type="PackedScene" uid="uid://cddekuvq64p1o" path="res://ui/country_panel/country_panel.tscn" id="5_imuuq"]
+[ext_resource type="PackedScene" uid="uid://7lvt4jk72mm5" path="res://ui/contracts_panel/contracts_panel.tscn" id="6_kwc50"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -49,3 +50,7 @@ metadata/_custom_type_script = "uid://4qbb4777o4f6"
 
 [node name="CountryPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("5_imuuq")]
 layout_mode = 1
+
+[node name="ContractsPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("6_kwc50")]
+layout_mode = 1
+panel_name = "contracts"

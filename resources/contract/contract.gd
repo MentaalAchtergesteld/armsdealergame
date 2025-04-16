@@ -38,5 +38,5 @@ static func create(
 	contract.deliver_deadline = deliver_deadline;
 	contract.base_price = base_price;
 	contract.items = items;
-	contract.issue_time = GameTime.current_time;
+	contract.issue_time = 0;
 	return contract;

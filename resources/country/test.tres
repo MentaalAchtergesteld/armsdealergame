@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Country" load_steps=4 format=3 uid="uid://bnkffntk3t3jl"]
+
+[ext_resource type="Texture2D" uid="uid://bpaqy4jonra0f" path="res://assets/flags/united_kingdom.svg" id="1_aamkb"]
+[ext_resource type="Script" uid="uid://c76jbymmio2qn" path="res://resources/item/item.gd" id="2_s2bwp"]
+[ext_resource type="Script" uid="uid://dno6vvo2bnu85" path="res://resources/country/country.gd" id="3_ph4yv"]
+
+[resource]
+script = ExtResource("3_ph4yv")
+name = "dsasda"
+flag = ExtResource("1_aamkb")
+stability = 0.5
+regime = 0
+funds = 100.0
+inventory = Dictionary[ExtResource("2_s2bwp"), int]({})
+metadata/_custom_type_script = "uid://dno6vvo2bnu85"

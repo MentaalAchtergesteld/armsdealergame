@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ygnm3sln78hs"]
+[gd_scene load_steps=10 format=3 uid="uid://ygnm3sln78hs"]
 
 [ext_resource type="Theme" uid="uid://gp455ngd4uoi" path="res://ui/main_theme.tres" id="1_po106"]
 [ext_resource type="Script" uid="uid://ctms4scwhkdt5" path="res://ui/base_panel/base_panel.gd" id="2_3mt3b"]
+[ext_resource type="Theme" uid="uid://d1h7mh8cch8hl" path="res://ui/base_panel/content_theme.tres" id="3_khr3g"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_3mt3b"]
 device = -1
@@ -189,6 +190,7 @@ theme_override_constants/separation = 4
 [node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_khr3g")
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
