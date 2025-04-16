@@ -1,3 +1,4 @@
+@tool
 class_name CountryPanel
 extends BasePanel
 
@@ -6,6 +7,7 @@ extends BasePanel
 @onready var regime_label: LabeledValue = %Regime
 @onready var stability_label: LabeledValue = %Stability
 @onready var funds_label: LabeledValue = %Funds
+@onready var inventory_items: VBoxContainer = %InventoryItems
 
 var country: Country;
 
@@ -27,7 +29,14 @@ func _on_funds_changed(funds: float) -> void:
 	funds_label.set_value(funds);
 
 func _on_inventory_changed(inventory: Dictionary[Item, int]) -> void:
-	pass;
+	for child in inventory_items.get_children():
+		child.queue_free();
+	
+	for item in inventory:
+		var label = Label.new();
+		var quantity = inventory[item];
+		label.text = str(quantity) + "x " + item.plural;
+		inventory_items.add_child(label);
 
 func update_all_data():
 	if country == null: return;

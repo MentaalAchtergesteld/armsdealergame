@@ -72,6 +72,7 @@ corner_detail = 4
 
 [resource]
 default_font_size = 16
+Label/font_sizes/font_size = 24
 LabeledField/base_type = &"Label"
 LabeledField/font_sizes/font_size = 24
 MarginContainer/constants/margin_bottom = 8

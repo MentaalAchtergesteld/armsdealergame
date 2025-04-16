@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://v3bo14in7d7k" path="res://ui/labeled_value/labeled_value.tscn" id="3_v6x06"]
 
 [node name="CountryPanel" instance=ExtResource("1_3gcxq")]
-offset_left = -1024.0
-offset_right = -512.0
 script = ExtResource("2_rfsxr")
 panel_name = "country"
 
@@ -73,21 +71,18 @@ theme_override_constants/separation = 8
 [node name="Regime" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="0" instance=ExtResource("3_v6x06")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("3_pfsgc")
 theme_type_variation = &"LabeledField"
 label = "Regime"
 
 [node name="Stability" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_v6x06")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("3_pfsgc")
 theme_type_variation = &"LabeledField"
 label = "Stability"
 
 [node name="Funds" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Political/MarginContainer/VBoxContainer" index="2" instance=ExtResource("3_v6x06")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("3_pfsgc")
 theme_type_variation = &"LabeledField"
 label = "Funds"
 
@@ -95,3 +90,10 @@ label = "Funds"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Inventory" index="0"]
+layout_mode = 2
+
+[node name="InventoryItems" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer/Inventory/MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
