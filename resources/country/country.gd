@@ -38,7 +38,7 @@ enum RegimeType {
 		regime = value;
 		regime_changed.emit(regime);
 
-@export var funds: float = 100.0:
+@export var funds: float = 0.0:
 	set(value):
 		funds = value;
 		funds_changed.emit(funds);

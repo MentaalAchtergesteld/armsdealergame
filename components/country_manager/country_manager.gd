@@ -4,6 +4,9 @@ extends Node
 signal country_added(country: Country);
 signal player_country_created(country: Country);
 
+@export var base_funds: float = 0.0;
+@export var base_inventory: Dictionary[Item, int] = {};
+
 var player_country: Country;
 var countries: Array[Country] = [];
 
@@ -11,6 +14,12 @@ func add_country(country: Country) -> bool:
 	if countries.has(country):
 		push_warning("Tried adding an already existing country: " + country.name);
 		return false;
+	
+	country.funds += base_funds;
+	
+	for item in base_inventory.keys():
+		var item_count = country.inventory.get(item, 0);
+		country.inventory[item] = item_count + base_inventory[item];
 	
 	countries.append(country);
 	country_added.emit(country);
@@ -23,7 +32,6 @@ func create_player_country() -> void:
 		Country.RegimeType.Democracy,
 		1.0,
 	);
-	country.funds = 1000.0;
 	
 	add_country(country);
 	player_country = country;
