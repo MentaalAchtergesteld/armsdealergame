@@ -44,7 +44,7 @@ func _on_time_resumed() -> void:
 	time_speed.self_modulate = resumed_color;
 
 func _ready() -> void:
-	UIEventBus.time_updated.connect(_on_time_updated);
+	UIEventBus.time_changed.connect(_on_time_updated);
 	UIEventBus.time_speed_changed.connect(_on_time_speed_changed);
 	UIEventBus.time_paused.connect(_on_time_paused);
 	UIEventBus.time_resumed.connect(_on_time_resumed);

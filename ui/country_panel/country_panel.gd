@@ -33,10 +33,8 @@ func _on_inventory_changed(inventory: Dictionary[Item, int]) -> void:
 		child.queue_free();
 	
 	for item in inventory:
-		var label = Label.new();
-		var quantity = inventory[item];
-		label.text = str(quantity) + "x " + item.plural;
-		inventory_items.add_child(label);
+		var listing = ItemListing.create(item, inventory[item]);
+		inventory_items.add_child(listing);
 
 func update_all_data():
 	if country == null: return;

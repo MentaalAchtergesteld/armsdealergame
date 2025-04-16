@@ -30,4 +30,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if paused: return;
 	time += delta * time_speed;
-	UIEventBus.time_updated.emit(time);
+	UIEventBus.time_changed.emit(time);
+	EventBus.time_changed.emit(time);

@@ -13,6 +13,9 @@ panel_name = "country"
 [node name="PanelTitle" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" index="0"]
 text = "Country"
 
+[node name="CloseButton" parent="MarginContainer/VBoxContainer/Header/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(64, 48)
+
 [node name="Content" parent="MarginContainer/VBoxContainer" index="2"]
 theme = ExtResource("3_pfsgc")
 theme_override_constants/margin_left = 0
@@ -54,9 +57,10 @@ text_overrun_behavior = 3
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Political" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer" index="1"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_pfsgc")
 metadata/_tab_index = 0
@@ -87,7 +91,6 @@ theme_type_variation = &"LabeledField"
 label = "Funds"
 
 [node name="Inventory" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/TabContainer" index="2"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://de3i0nr1jvuoy"]
+
+[ext_resource type="Script" uid="uid://cuvc5q1qwrx13" path="res://ui/item_listing/item_listing.gd" id="1_175m7"]
+[ext_resource type="Resource" uid="uid://dfn0vy50xh2em" path="res://resources/item/gun.tres" id="2_wwqi7"]
+[ext_resource type="Texture2D" uid="uid://btdt6u8bofbsc" path="res://assets/good_icons/assault_rifle.svg" id="3_k67g7"]
+
+[node name="ItemListing" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_175m7")
+item = ExtResource("2_wwqi7")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_k67g7")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ItemListing"
+text = "0x"
+
+[node name="Item" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ItemListing"
+text = "Guns"
