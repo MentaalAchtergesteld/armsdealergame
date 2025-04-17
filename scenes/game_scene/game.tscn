@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://oo8rwyat8nxq"]
+[gd_scene load_steps=10 format=3 uid="uid://oo8rwyat8nxq"]
 
 [ext_resource type="Script" uid="uid://gw84p6cs70ch" path="res://components/game_data_loader/game_data_loader.gd" id="1_700et"]
 [ext_resource type="Script" uid="uid://jt1hvwpvimuo" path="res://components/country_manager/country_manager.gd" id="2_o347i"]
@@ -8,12 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://d0eqn1ka10bu7" path="res://entities/player_camera/player_camera.tscn" id="4_wedpv"]
 [ext_resource type="PackedScene" uid="uid://bkmhh4xifuxj" path="res://ui/hud/hud.tscn" id="5_o347i"]
 [ext_resource type="Resource" uid="uid://dfn0vy50xh2em" path="res://resources/item/gun.tres" id="5_oxnsv"]
+[ext_resource type="Script" uid="uid://bkvg4a3t4x7yk" path="res://components/global_market/global_market.gd" id="7_oxnsv"]
 
 [node name="Game" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_o347i")]
+
+[node name="Toolbar" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer" index="0" node_paths=PackedStringArray("country_manager", "global_market")]
+country_manager = NodePath("../../../../../CountryManager")
+global_market = NodePath("../../../../../GlobalMarket")
+
+[node name="ContractsPanel" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer/PanelManager" index="1" node_paths=PackedStringArray("global_market")]
+global_market = NodePath("../../../../../../GlobalMarket")
 
 [node name="GameDataLoader" type="Node" parent="." node_paths=PackedStringArray("country_manager", "map")]
 script = ExtResource("1_700et")
@@ -33,7 +41,9 @@ ExtResource("5_oxnsv"): 50
 [node name="GameTime" type="Node" parent="."]
 script = ExtResource("4_7ulqd")
 
-[node name="GlobalMarket" type="Node" parent="."]
+[node name="GlobalMarket" type="Node" parent="." node_paths=PackedStringArray("game_time")]
+script = ExtResource("7_oxnsv")
+game_time = NodePath("../GameTime")
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("3_7ulqd")
@@ -41,3 +51,5 @@ script = ExtResource("3_7ulqd")
 [node name="PlayerCamera" parent="." instance=ExtResource("4_wedpv")]
 position = Vector2(302, -1170)
 max_speed = 500.0
+
+[editable path="CanvasLayer/HUD"]

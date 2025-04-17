@@ -15,7 +15,16 @@ signal has_expired;
 
 var bids: Array[Bid] = [];
 
-var is_expired: bool = false;
+var is_expired: bool = false:
+	set(value):
+		is_expired = value;
+		if is_expired:
+			has_expired.emit();
+
+func check_expiration(time: float) -> bool:
+	if !is_expired and time > bid_deadline:
+		is_expired = true;
+	return is_expired;
 
 func add_bid(bid: Bid) -> bool:
 	if bid.offer < base_price: return false;

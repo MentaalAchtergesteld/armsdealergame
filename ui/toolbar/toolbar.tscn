@@ -24,19 +24,35 @@ theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Right" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
 theme_override_constants/separation = 12
 
-[node name="PlayerCountryButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_klgnq")]
+[node name="PlayerCountryButton" parent="MarginContainer/HBoxContainer/Right" instance=ExtResource("1_klgnq")]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Contracts" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Contracts" type="Button" parent="MarginContainer/HBoxContainer/Right"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Contracts"
 
-[node name="TimeControls" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_ufpla")]
+[node name="Left" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_constants/separation = 12
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Contracts" to="." method="_on_contracts_pressed"]
+[node name="AddRandomContract" type="Button" parent="MarginContainer/HBoxContainer/Left"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Add random contract"
+
+[node name="TimeControls" parent="MarginContainer/HBoxContainer/Left" instance=ExtResource("3_ufpla")]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Right/Contracts" to="." method="_on_contracts_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Left/AddRandomContract" to="." method="_on_add_random_contract_pressed"]

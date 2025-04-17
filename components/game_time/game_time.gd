@@ -1,6 +1,8 @@
 class_name GameTime
 extends Node
 
+signal time_changed(time: float);
+
 var time: float = 0;
 var time_speed: float = 1.0;
 var paused: bool = true;
@@ -32,3 +34,4 @@ func _process(delta: float) -> void:
 	time += delta * time_speed;
 	UIEventBus.time_changed.emit(time);
 	EventBus.time_changed.emit(time);
+	time_changed.emit(time);

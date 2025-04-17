@@ -40,11 +40,13 @@ z_index = 100
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_force_pass_scroll_events = false
 
 [node name="PanelManager" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
 script = ExtResource("3_e0nub")
 metadata/_custom_type_script = "uid://4qbb4777o4f6"
 
