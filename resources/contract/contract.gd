@@ -3,7 +3,7 @@ extends Resource
 
 enum ContractType { Buy, Sell };
 
-signal has_expired;
+signal contract_expired;
 
 @export var issuer: Country;
 @export var type: ContractType = ContractType.Buy;
@@ -19,7 +19,7 @@ var is_expired: bool = false:
 	set(value):
 		is_expired = value;
 		if is_expired:
-			has_expired.emit();
+			contract_expired.emit();
 
 func check_expiration(time: float) -> bool:
 	if !is_expired and time > bid_deadline:

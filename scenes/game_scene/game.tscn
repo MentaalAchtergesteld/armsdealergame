@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://oo8rwyat8nxq"]
+[gd_scene load_steps=11 format=3 uid="uid://oo8rwyat8nxq"]
 
 [ext_resource type="Script" uid="uid://gw84p6cs70ch" path="res://components/game_data_loader/game_data_loader.gd" id="1_700et"]
+[ext_resource type="Script" uid="uid://d38bws6npjynt" path="res://components/ui_data_manager/ui_data_manager.gd" id="2_lnrhe"]
 [ext_resource type="Script" uid="uid://jt1hvwpvimuo" path="res://components/country_manager/country_manager.gd" id="2_o347i"]
 [ext_resource type="Script" uid="uid://dp4rsqargivda" path="res://components/map/map.gd" id="3_7ulqd"]
 [ext_resource type="Script" uid="uid://4nfiuvp55ii0" path="res://components/game_time/game_time.gd" id="4_7ulqd"]
@@ -20,8 +21,12 @@
 country_manager = NodePath("../../../../../CountryManager")
 global_market = NodePath("../../../../../GlobalMarket")
 
-[node name="ContractsPanel" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer/PanelManager" index="1" node_paths=PackedStringArray("global_market")]
-global_market = NodePath("../../../../../../GlobalMarket")
+[node name="PanelManager" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer" index="1" node_paths=PackedStringArray("ui_provider_manager")]
+ui_provider_manager = NodePath("../../../../../UIProviderManager")
+
+[node name="UIProviderManager" type="Node" parent="." node_paths=PackedStringArray("providers")]
+script = ExtResource("2_lnrhe")
+providers = [NodePath("../GlobalMarket"), NodePath("../GameTime"), NodePath("../CountryManager")]
 
 [node name="GameDataLoader" type="Node" parent="." node_paths=PackedStringArray("country_manager", "map")]
 script = ExtResource("1_700et")

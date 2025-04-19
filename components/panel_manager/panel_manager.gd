@@ -1,6 +1,8 @@
 class_name PanelManager
 extends Control
 
+@export var ui_provider_manager: UIProviderManager;
+
 var panels: Dictionary[String, BasePanel] = {};
 
 var open_panel: BasePanel = null;
@@ -11,6 +13,8 @@ func load_panels() -> void:
 		panels[child.panel_name] = child;
 		child.panel_closed.connect(_on_panel_closed.bind(child));
 		child.panel_opened.connect(_on_panel_opened.bind(child));
+		
+		child.init(ui_provider_manager);
 
 func _ready() -> void:
 	load_panels();

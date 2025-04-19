@@ -7,6 +7,8 @@ var time: float = 0;
 var time_speed: float = 1.0;
 var paused: bool = true;
 
+var alarms: Array[Dictionary] = [];
+
 func _on_set_time(time_: float) -> void:
 	time = time_;
 	UIEventBus.time_updated.emit(time);
@@ -29,9 +31,20 @@ func _ready() -> void:
 	EventBus.pause_time.connect(_on_pause_time);
 	EventBus.resume_time.connect(_on_resume_time);
 
+func add_alarm(time: float, callback: Callable) -> void:
+	alarms.append({time=time,callback=callback});
+
 func _process(delta: float) -> void:
 	if paused: return;
 	time += delta * time_speed;
 	UIEventBus.time_changed.emit(time);
 	EventBus.time_changed.emit(time);
 	time_changed.emit(time);
+	
+	alarms = alarms.filter(func(alarm):
+		if alarm.time < time:
+			alarm.callback.call();
+			return false;
+		else:
+			return true;
+	);

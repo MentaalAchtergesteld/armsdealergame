@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjy4p3vue1bqe"]
+[gd_scene load_steps=8 format=3 uid="uid://cjy4p3vue1bqe"]
 
 [ext_resource type="Script" uid="uid://oor5t2oun5v5" path="res://ui/contract_listing/contract_listing.gd" id="1_eekn4"]
 [ext_resource type="Theme" uid="uid://d1h7mh8cch8hl" path="res://ui/base_panel/content_theme.tres" id="1_mxmvg"]
-[ext_resource type="Resource" uid="uid://cejeevuv7vobn" path="res://resources/contract/debug_contract.tres" id="3_ldidf"]
+[ext_resource type="Texture2D" uid="uid://big3m5upxm1n8" path="res://assets/flags/albania.svg" id="3_ldidf"]
 [ext_resource type="PackedScene" uid="uid://v3bo14in7d7k" path="res://ui/labeled_value/labeled_value.tscn" id="5_p3no7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3no7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldidf"]
 bg_color = Color(0.23888, 0.23888, 0.23888, 1)
@@ -12,14 +19,18 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="Theme" id="Theme_mxmvg"]
+LabeledField/base_type = &"Label"
+LabeledField/font_sizes/font_size = 16
+
 [node name="ContractListing" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 96)
-offset_right = 384.0
-offset_bottom = 96.0
+custom_minimum_size = Vector2(0, 108)
+offset_right = 274.0
+offset_bottom = 108.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_mxmvg")
 script = ExtResource("1_eekn4")
-contract = ExtResource("3_ldidf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -30,39 +41,65 @@ theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Left" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 4
+
+[node name="TypeBar" type="Panel" parent="MarginContainer/HBoxContainer/Left"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3no7")
+
+[node name="CountryFlagContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/Left"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldidf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Left/CountryFlagContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="CountryFlag" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="CountryFlag" type="TextureRect" parent="MarginContainer/HBoxContainer/Left/CountryFlagContainer/MarginContainer"]
 unique_name_in_owner = true
 z_as_relative = false
 texture_filter = 1
 layout_mode = 2
+texture = ExtResource("3_ldidf")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Right" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 
-[node name="Type" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="Details" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Right"]
 layout_mode = 2
-text = "Buy"
+theme = SubResource("Theme_mxmvg")
 
-[node name="Deadline" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_p3no7")]
+[node name="Deadline" parent="MarginContainer/HBoxContainer/Right/Details" instance=ExtResource("5_p3no7")]
 unique_name_in_owner = true
 layout_mode = 2
 label = "Bid deadline"
 value = ""
+
+[node name="Price" parent="MarginContainer/HBoxContainer/Right/Details" instance=ExtResource("5_p3no7")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Price"
+value = "10"
+
+[node name="IsExpired" type="Label" parent="MarginContainer/HBoxContainer/Right/Details"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "EXPIRED"

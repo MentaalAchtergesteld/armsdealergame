@@ -16,6 +16,10 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return;
 	animation_player.play("RESET");
 
+# Called by panel manager
+func init(provider_manager: UIProviderManager) -> void:
+	pass;
+
 # Function to overwrite for inherited scenes.
 func setup(data: Dictionary):
 	pass
