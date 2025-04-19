@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnhu202luv4pp"]
-
-[ext_resource type="Script" uid="uid://g0r06st6gb2t" path="res://UI/InventoryList/inventory_list.gd" id="1_7si42"]
-
-[node name="InventoryList" type="VBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_7si42")
