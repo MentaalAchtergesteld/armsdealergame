@@ -52,6 +52,10 @@ metadata/_custom_type_script = "uid://4qbb4777o4f6"
 
 [node name="CountryPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("5_imuuq")]
 layout_mode = 1
+offset_left = -512.0
+offset_right = 0.0
 
 [node name="ContractsPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("6_kwc50")]
 layout_mode = 1
+offset_left = -512.0
+offset_right = 0.0

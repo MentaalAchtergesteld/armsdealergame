@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://oor5t2oun5v5" path="res://ui/contract_listing/contract_listing.gd" id="1_eekn4"]
 [ext_resource type="Theme" uid="uid://d1h7mh8cch8hl" path="res://ui/base_panel/content_theme.tres" id="1_mxmvg"]
-[ext_resource type="Texture2D" uid="uid://big3m5upxm1n8" path="res://assets/flags/albania.svg" id="3_ldidf"]
+[ext_resource type="Texture2D" uid="uid://bpaqy4jonra0f" path="res://assets/flags/united_kingdom.svg" id="3_ldidf"]
 [ext_resource type="PackedScene" uid="uid://v3bo14in7d7k" path="res://ui/labeled_value/labeled_value.tscn" id="5_p3no7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3no7"]
@@ -74,7 +74,7 @@ z_as_relative = false
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("3_ldidf")
-expand_mode = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Right" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]

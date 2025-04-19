@@ -11,7 +11,7 @@ var contracts: Array[Contract] = [];
 
 func _on_contract_expired(contract: Contract) -> void:
 	game_time.add_alarm(
-		game_time.time + randf_range(50, 100),
+		game_time.time_hours + randf_range(50, 100),
 		remove_contract.bind(contract)
 	);
 

@@ -1,15 +1,15 @@
 class_name GameTime
 extends Node
 
-signal time_changed(time: float);
+signal time_changed(time_hours: float);
 signal speed_changed(speed: float);
 signal paused;
 signal resumed;
 
-var time: float = 0:
+var time_hours: float = 0:
 	set(value):
-		time = value;
-		time_changed.emit(time);
+		time_hours = value;
+		time_changed.emit(time_hours);
 var speed: float = 1.0:
 	set(value):
 		speed = value;
@@ -30,9 +30,9 @@ func add_alarm(time: float, callback: Callable) -> void:
 
 func _process(delta: float) -> void:
 	if is_paused: return;
-	time += delta * speed;
+	time_hours += delta * speed;
 	alarms = alarms.filter(func(alarm):
-		if alarm.time < time:
+		if alarm.time < time_hours:
 			alarm.callback.call();
 			return false;
 		else:
