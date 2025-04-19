@@ -55,4 +55,3 @@ layout_mode = 1
 
 [node name="ContractsPanel" parent="MarginContainer/VBoxContainer/PanelManager" instance=ExtResource("6_kwc50")]
 layout_mode = 1
-panel_name = "contracts"

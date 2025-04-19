@@ -2,45 +2,35 @@ class_name GameTime
 extends Node
 
 signal time_changed(time: float);
+signal speed_changed(speed: float);
+signal paused;
+signal resumed;
 
-var time: float = 0;
-var time_speed: float = 1.0;
-var paused: bool = true;
+var time: float = 0:
+	set(value):
+		time = value;
+		time_changed.emit(time);
+var speed: float = 1.0:
+	set(value):
+		speed = value;
+		speed_changed.emit(speed);
+var is_paused: bool = true:
+	set(value):
+		if is_paused == value: return;
+		is_paused = value;
+		if is_paused:
+			paused.emit();
+		else:
+			resumed.emit();
 
 var alarms: Array[Dictionary] = [];
-
-func _on_set_time(time_: float) -> void:
-	time = time_;
-	UIEventBus.time_updated.emit(time);
-
-func _on_set_time_speed(speed: float) -> void:
-	time_speed = speed;
-	UIEventBus.time_speed_changed.emit(time_speed);
-
-func _on_pause_time() -> void:
-	paused = true;
-	UIEventBus.time_paused.emit();
-
-func _on_resume_time() -> void:
-	paused = false;
-	UIEventBus.time_resumed.emit();
-
-func _ready() -> void:
-	EventBus.set_time.connect(_on_set_time);
-	EventBus.set_time_speed.connect(_on_set_time_speed);
-	EventBus.pause_time.connect(_on_pause_time);
-	EventBus.resume_time.connect(_on_resume_time);
 
 func add_alarm(time: float, callback: Callable) -> void:
 	alarms.append({time=time,callback=callback});
 
 func _process(delta: float) -> void:
-	if paused: return;
-	time += delta * time_speed;
-	UIEventBus.time_changed.emit(time);
-	EventBus.time_changed.emit(time);
-	time_changed.emit(time);
-	
+	if is_paused: return;
+	time += delta * speed;
 	alarms = alarms.filter(func(alarm):
 		if alarm.time < time:
 			alarm.callback.call();

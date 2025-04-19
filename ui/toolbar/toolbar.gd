@@ -1,8 +1,8 @@
 class_name Toolbar
 extends PanelContainer
 
-@export var country_manager: CountryManager;
-@export var global_market: GlobalMarket;
+var country_manager: CountryManager;
+var global_market: GlobalMarket;
 
 func _on_contracts_pressed() -> void:
 	UIEventBus.toggle_panel.emit("contracts", {});
@@ -21,3 +21,15 @@ func _on_add_random_contract_pressed() -> void:
 	);
 	
 	global_market.add_contract(contract);
+
+func setup_providers() -> void:
+	var manager = UIProviderManager.manager;
+	if manager == null:
+		push_error("Provider manager not found!");
+		return;
+	
+	country_manager = manager.get_provider(CountryManager);
+	global_market = manager.get_provider(GlobalMarket);
+
+func _ready() -> void:
+	setup_providers();

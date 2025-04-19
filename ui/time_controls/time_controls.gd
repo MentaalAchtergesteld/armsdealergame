@@ -24,6 +24,8 @@ extends PanelContainer
 			else:
 				_on_time_resumed();
 
+var game_time: GameTime;
+
 @export_color_no_alpha var paused_color: Color:
 	set(value):
 		paused_color = value;
@@ -44,23 +46,19 @@ func _on_time_resumed() -> void:
 	time_speed.self_modulate = resumed_color;
 
 func _ready() -> void:
-	UIEventBus.time_changed.connect(_on_time_updated);
-	UIEventBus.time_speed_changed.connect(_on_time_speed_changed);
-	UIEventBus.time_paused.connect(_on_time_paused);
-	UIEventBus.time_resumed.connect(_on_time_resumed);
+	game_time = UIProviderManager.manager.get_provider(GameTime);
+	game_time.time_changed.connect(_on_time_updated);
+	game_time.speed_changed.connect(_on_time_speed_changed);
+	game_time.paused.connect(_on_time_paused);
+	game_time.resumed.connect(_on_time_resumed);
 
 func _on_decrease_speed_pressed() -> void:
 	if time_speed.value > min_speed_multiplier:
-		EventBus.set_time_speed.emit(base_speed * (time_speed.value - 1));
+		game_time.speed = base_speed * (time_speed.value - 1);
 
 func _on_increase_speed_pressed() -> void:
 	if time_speed.value < max_speed_multiplier:
-		EventBus.set_time_speed.emit(base_speed * (time_speed.value + 1));
+		game_time.speed = base_speed * (time_speed.value + 1);
 
 func _on_pause_resume_pressed() -> void:
-	paused = !paused;
-	
-	if paused:
-		EventBus.pause_time.emit();
-	else:
-		EventBus.resume_time.emit();
+	game_time.is_paused = !game_time.is_paused;

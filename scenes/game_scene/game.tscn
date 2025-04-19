@@ -17,16 +17,9 @@
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_o347i")]
 
-[node name="Toolbar" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer" index="0" node_paths=PackedStringArray("country_manager", "global_market")]
-country_manager = NodePath("../../../../../CountryManager")
-global_market = NodePath("../../../../../GlobalMarket")
-
-[node name="PanelManager" parent="CanvasLayer/HUD/MarginContainer/VBoxContainer" index="1" node_paths=PackedStringArray("ui_provider_manager")]
-ui_provider_manager = NodePath("../../../../../UIProviderManager")
-
-[node name="UIProviderManager" type="Node" parent="." node_paths=PackedStringArray("providers")]
+[node name="UIProviderManager" type="Node" parent="." node_paths=PackedStringArray("providers") groups=["UIProviderManager"]]
 script = ExtResource("2_lnrhe")
-providers = [NodePath("../GlobalMarket"), NodePath("../GameTime"), NodePath("../CountryManager")]
+providers = [NodePath("../CountryManager"), NodePath("../GameTime"), NodePath("../GlobalMarket")]
 
 [node name="GameDataLoader" type="Node" parent="." node_paths=PackedStringArray("country_manager", "map")]
 script = ExtResource("1_700et")
@@ -56,5 +49,3 @@ script = ExtResource("3_7ulqd")
 [node name="PlayerCamera" parent="." instance=ExtResource("4_wedpv")]
 position = Vector2(302, -1170)
 max_speed = 500.0
-
-[editable path="CanvasLayer/HUD"]
