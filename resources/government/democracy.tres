@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="Government" load_steps=14 format=3 uid="uid://dk1j64i0elq5g"]
+
+[ext_resource type="Script" uid="uid://dul8cpnbqbw71" path="res://resources/politician/politician.gd" id="1_pxslv"]
+[ext_resource type="Script" uid="uid://cih5hwqhcdu2" path="res://resources/decision/decision.gd" id="2_et8ch"]
+[ext_resource type="Script" uid="uid://xhy283fm6c1" path="res://resources/decision/modify_tarrifs.gd" id="3_et8ch"]
+[ext_resource type="Script" uid="uid://cxrx8djrf8848" path="res://resources/government/government.gd" id="3_wd4nb"]
+
+[sub_resource type="Resource" id="Resource_pxslv"]
+script = ExtResource("1_pxslv")
+name = "Politician 1"
+metadata/_custom_type_script = "uid://dul8cpnbqbw71"
+
+[sub_resource type="Resource" id="Resource_et8ch"]
+script = ExtResource("1_pxslv")
+name = "Politician 2"
+metadata/_custom_type_script = "uid://dul8cpnbqbw71"
+
+[sub_resource type="Resource" id="Resource_wd4nb"]
+script = ExtResource("1_pxslv")
+name = "Politician 3"
+metadata/_custom_type_script = "uid://dul8cpnbqbw71"
+
+[sub_resource type="Resource" id="Resource_eudg2"]
+script = ExtResource("1_pxslv")
+name = "Politician 4"
+metadata/_custom_type_script = "uid://dul8cpnbqbw71"
+
+[sub_resource type="Resource" id="Resource_841b2"]
+script = ExtResource("1_pxslv")
+name = "Politician 5"
+metadata/_custom_type_script = "uid://dul8cpnbqbw71"
+
+[sub_resource type="Resource" id="Resource_i2ud1"]
+script = ExtResource("3_et8ch")
+all_tarrifs = false
+tarrifs = Array[String](["rifles"])
+random_range = Vector2(5, 7.5)
+metadata/_custom_type_script = "uid://xhy283fm6c1"
+
+[sub_resource type="Resource" id="Resource_2ii8r"]
+script = ExtResource("3_et8ch")
+all_tarrifs = false
+tarrifs = Array[String](["rifles"])
+random_range = Vector2(-5, -7.5)
+metadata/_custom_type_script = "uid://xhy283fm6c1"
+
+[sub_resource type="Resource" id="Resource_rilxl"]
+script = ExtResource("3_et8ch")
+all_tarrifs = true
+tarrifs = Array[String]([])
+random_range = Vector2(1, 2)
+metadata/_custom_type_script = "uid://xhy283fm6c1"
+
+[sub_resource type="Resource" id="Resource_8dqnc"]
+script = ExtResource("3_et8ch")
+all_tarrifs = true
+tarrifs = Array[String]([])
+random_range = Vector2(-1, -2)
+metadata/_custom_type_script = "uid://xhy283fm6c1"
+
+[resource]
+script = ExtResource("3_wd4nb")
+name = "Democracy"
+politicians = Array[ExtResource("1_pxslv")]([SubResource("Resource_pxslv"), SubResource("Resource_et8ch"), SubResource("Resource_wd4nb"), SubResource("Resource_eudg2"), SubResource("Resource_841b2")])
+possible_decisions = Array[ExtResource("2_et8ch")]([SubResource("Resource_i2ud1"), SubResource("Resource_2ii8r"), SubResource("Resource_rilxl"), SubResource("Resource_8dqnc")])
+metadata/_custom_type_script = "uid://cxrx8djrf8848"

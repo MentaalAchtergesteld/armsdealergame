@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Calendar" load_steps=15 format=3 uid="uid://c4pgg1e7i4urk"]
+
+[ext_resource type="Script" uid="uid://b5wo436kc6bt3" path="res://resources/month/month.gd" id="1_74agy"]
+[ext_resource type="Resource" uid="uid://cr1vgm4l2xdtq" path="res://resources/month/gregorian/january.tres" id="2_ly2ld"]
+[ext_resource type="Script" uid="uid://yox02fuknyan" path="res://resources/calendar/calendar.gd" id="2_welt6"]
+[ext_resource type="Resource" uid="uid://daqeo0k8qdm35" path="res://resources/month/gregorian/february.tres" id="3_p36d7"]
+[ext_resource type="Resource" uid="uid://beejv0efcxcio" path="res://resources/month/gregorian/march.tres" id="4_pkm67"]
+[ext_resource type="Resource" uid="uid://c3ngdralnljhh" path="res://resources/month/gregorian/april.tres" id="5_j836h"]
+[ext_resource type="Resource" uid="uid://qtdygyvtom1h" path="res://resources/month/gregorian/may.tres" id="6_nymvt"]
+[ext_resource type="Resource" uid="uid://csyijfy0nsucm" path="res://resources/month/gregorian/june.tres" id="7_57wud"]
+[ext_resource type="Resource" uid="uid://vd7c5d4byqao" path="res://resources/month/gregorian/july.tres" id="8_2oe84"]
+[ext_resource type="Resource" uid="uid://icwlmn0qdrs5" path="res://resources/month/gregorian/august.tres" id="9_0xsdr"]
+[ext_resource type="Resource" uid="uid://bsamhfalkb61l" path="res://resources/month/gregorian/september.tres" id="10_35e1n"]
+[ext_resource type="Resource" uid="uid://caujvfo6xyc5p" path="res://resources/month/gregorian/october.tres" id="11_7jd0v"]
+[ext_resource type="Resource" uid="uid://d24b7p8edewrg" path="res://resources/month/gregorian/november.tres" id="12_uhetb"]
+[ext_resource type="Resource" uid="uid://cmfhhr1n50lha" path="res://resources/month/gregorian/december.tres" id="13_x0nqy"]
+
+[resource]
+script = ExtResource("2_welt6")
+week_days = Array[String](["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+months = Array[ExtResource("1_74agy")]([ExtResource("2_ly2ld"), ExtResource("3_p36d7"), ExtResource("4_pkm67"), ExtResource("5_j836h"), ExtResource("6_nymvt"), ExtResource("7_57wud"), ExtResource("8_2oe84"), ExtResource("9_0xsdr"), ExtResource("10_35e1n"), ExtResource("11_7jd0v"), ExtResource("12_uhetb"), ExtResource("13_x0nqy")])
+metadata/_custom_type_script = "uid://yox02fuknyan"

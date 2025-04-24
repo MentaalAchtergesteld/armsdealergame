@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ryr0q2cuaw0q"]
+
+[ext_resource type="Script" uid="uid://cgb77v3lkuovx" path="res://components/game_time/game_time.gd" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://bgoft155i5wuq" path="res://scenes/main/main.gd" id="1_k2fmo"]
+[ext_resource type="Script" uid="uid://bt7fjryybia3f" path="res://components/scheduler/scheduler.gd" id="2_iuonh"]
+[ext_resource type="Resource" uid="uid://c4pgg1e7i4urk" path="res://resources/calendar/gregorian.tres" id="3_l3cfh"]
+[ext_resource type="Script" uid="uid://cvswgajda4cht" path="res://components/resource_locator/resource_locator.gd" id="5_6q06x"]
+[ext_resource type="Script" uid="uid://b8uc3nt78dm6g" path="res://components/global_market/global_market.gd" id="6_ow5a4"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_k2fmo")
+
+[node name="ResourceLocator" type="Node" parent="."]
+script = ExtResource("5_6q06x")
+metadata/_custom_type_script = "uid://cvswgajda4cht"
+
+[node name="GameTime" type="Node" parent="."]
+script = ExtResource("1_hyk8p")
+seconds_per_day = 0.2
+calender = ExtResource("3_l3cfh")
+metadata/_custom_type_script = "uid://cgb77v3lkuovx"
+
+[node name="Scheduler" type="Node" parent="." node_paths=PackedStringArray("game_time")]
+script = ExtResource("2_iuonh")
+game_time = NodePath("../GameTime")
+metadata/_custom_type_script = "uid://bt7fjryybia3f"
+
+[node name="GlobalMarket" type="Node" parent="."]
+script = ExtResource("6_ow5a4")
+metadata/_custom_type_script = "uid://b8uc3nt78dm6g"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WeekDay" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Month" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Date" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "dsadsadas"
+
+[node name="TotalDays" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "dsadsadas"

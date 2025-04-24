@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Month" load_steps=2 format=3 uid="uid://c3ngdralnljhh"]
+
+[ext_resource type="Script" uid="uid://b5wo436kc6bt3" path="res://resources/month/month.gd" id="1_ht6ij"]
+
+[resource]
+script = ExtResource("1_ht6ij")
+name = "April"
+days = 30
+metadata/_custom_type_script = "uid://b5wo436kc6bt3"

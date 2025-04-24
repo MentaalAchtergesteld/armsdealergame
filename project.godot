@@ -11,14 +11,9 @@ config_version=5
 [application]
 
 config/name="ArmsDealerGame"
-run/main_scene="uid://oo8rwyat8nxq"
+run/main_scene="uid://ryr0q2cuaw0q"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/good_icons/default.svg"
-
-[autoload]
-
-UIEventBus="*res://autoloads/ui_event_bus.gd"
-EventBus="*res://autoloads/event_bus.gd"
 
 [display]
 
