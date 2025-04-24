@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="Country" load_steps=2 format=3 uid="uid://nv0e3okkc5dn"]
+[gd_resource type="Resource" script_class="Country" load_steps=3 format=3 uid="uid://nv0e3okkc5dn"]
 
+[ext_resource type="Resource" uid="uid://dk1j64i0elq5g" path="res://resources/government/democracy.tres" id="1_5ojcp"]
 [ext_resource type="Script" uid="uid://b1pokjsb40oi7" path="res://resources/country/country.gd" id="1_ba2do"]
 
 [resource]
 script = ExtResource("1_ba2do")
 name = "Democland"
+funds = 100.0
+stockpile = Dictionary[String, int]({})
 tarrifs = Dictionary[String, float]({
 "rifles": 10.0,
 "tanks": 20.0
 })
+government = ExtResource("1_5ojcp")
 metadata/_custom_type_script = "uid://b1pokjsb40oi7"

@@ -21,5 +21,4 @@ func _ready() -> void:
 	resource_locator.register_resource($GlobalMarket);
 	
 	game_time.day_passed.connect(_on_day_passed);
-	scheduler.schedule_in_months(2, func(): game_time.pause());
 	game_time.resume();

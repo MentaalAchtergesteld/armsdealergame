@@ -1,33 +1,39 @@
-[gd_resource type="Resource" script_class="Government" load_steps=14 format=3 uid="uid://dk1j64i0elq5g"]
+[gd_resource type="Resource" script_class="Government" load_steps=15 format=3 uid="uid://dk1j64i0elq5g"]
 
 [ext_resource type="Script" uid="uid://dul8cpnbqbw71" path="res://resources/politician/politician.gd" id="1_pxslv"]
 [ext_resource type="Script" uid="uid://cih5hwqhcdu2" path="res://resources/decision/decision.gd" id="2_et8ch"]
+[ext_resource type="Script" uid="uid://cj2ylrvdqo27j" path="res://resources/company/company.gd" id="2_wd4nb"]
 [ext_resource type="Script" uid="uid://xhy283fm6c1" path="res://resources/decision/modify_tarrifs.gd" id="3_et8ch"]
 [ext_resource type="Script" uid="uid://cxrx8djrf8848" path="res://resources/government/government.gd" id="3_wd4nb"]
 
 [sub_resource type="Resource" id="Resource_pxslv"]
 script = ExtResource("1_pxslv")
 name = "Politician 1"
+corruption = Dictionary[ExtResource("2_wd4nb"), float]({})
 metadata/_custom_type_script = "uid://dul8cpnbqbw71"
 
 [sub_resource type="Resource" id="Resource_et8ch"]
 script = ExtResource("1_pxslv")
 name = "Politician 2"
+corruption = Dictionary[ExtResource("2_wd4nb"), float]({})
 metadata/_custom_type_script = "uid://dul8cpnbqbw71"
 
 [sub_resource type="Resource" id="Resource_wd4nb"]
 script = ExtResource("1_pxslv")
 name = "Politician 3"
+corruption = Dictionary[ExtResource("2_wd4nb"), float]({})
 metadata/_custom_type_script = "uid://dul8cpnbqbw71"
 
 [sub_resource type="Resource" id="Resource_eudg2"]
 script = ExtResource("1_pxslv")
 name = "Politician 4"
+corruption = Dictionary[ExtResource("2_wd4nb"), float]({})
 metadata/_custom_type_script = "uid://dul8cpnbqbw71"
 
 [sub_resource type="Resource" id="Resource_841b2"]
 script = ExtResource("1_pxslv")
 name = "Politician 5"
+corruption = Dictionary[ExtResource("2_wd4nb"), float]({})
 metadata/_custom_type_script = "uid://dul8cpnbqbw71"
 
 [sub_resource type="Resource" id="Resource_i2ud1"]

@@ -18,3 +18,6 @@ func setup(resource_locator: ResourceLocator) -> void:
 	if government != null:
 		government.setup(resource_locator);
 		government.decision_made.connect(_on_decision_made);
+
+func process() -> void:
+	government.process();
