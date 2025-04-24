@@ -24,3 +24,11 @@ static func normalize_dictionary(dictionary: Dictionary) -> Dictionary:
 static func truncate(value: float, decimals: int) -> float:
 	var factor = pow(10, decimals);
 	return floor(value * factor) / factor;
+
+static func join_array(arr: Array, sep: String = ", ") -> String:
+	var out := "";
+	for i in arr.size():
+		out += str(arr[i]);
+		if i < arr.size() - 1:
+			out += sep;
+	return out;

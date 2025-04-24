@@ -1,7 +1,9 @@
-class_name ResourceLocator
 extends Node
 
 var resources: Dictionary = {};
+
+func clear() -> void:
+	resources.clear();
 
 func register_resource(resource: Node) -> void:
 	var resource_type = resource.get_script();

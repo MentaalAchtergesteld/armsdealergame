@@ -1,21 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://ryr0q2cuaw0q"]
+[gd_scene load_steps=9 format=3 uid="uid://ryr0q2cuaw0q"]
 
 [ext_resource type="Script" uid="uid://cgb77v3lkuovx" path="res://components/game_time/game_time.gd" id="1_hyk8p"]
 [ext_resource type="Script" uid="uid://bgoft155i5wuq" path="res://scenes/main/main.gd" id="1_k2fmo"]
 [ext_resource type="Script" uid="uid://bt7fjryybia3f" path="res://components/scheduler/scheduler.gd" id="2_iuonh"]
 [ext_resource type="Resource" uid="uid://c4pgg1e7i4urk" path="res://resources/calendar/gregorian.tres" id="3_l3cfh"]
-[ext_resource type="Script" uid="uid://cvswgajda4cht" path="res://components/resource_locator/resource_locator.gd" id="5_6q06x"]
 [ext_resource type="Script" uid="uid://b8uc3nt78dm6g" path="res://components/global_market/global_market.gd" id="6_ow5a4"]
 [ext_resource type="Script" uid="uid://cq867j44f8q50" path="res://components/country_manager/country_manager.gd" id="7_hujxm"]
 [ext_resource type="Script" uid="uid://b1pokjsb40oi7" path="res://resources/country/country.gd" id="8_b1x3f"]
 [ext_resource type="Resource" uid="uid://nv0e3okkc5dn" path="res://resources/country/democland.tres" id="9_a8run"]
 
 [node name="Main" type="Node2D"]
+visible = false
 script = ExtResource("1_k2fmo")
-
-[node name="ResourceLocator" type="Node" parent="."]
-script = ExtResource("5_6q06x")
-metadata/_custom_type_script = "uid://cvswgajda4cht"
 
 [node name="GameTime" type="Node" parent="."]
 script = ExtResource("1_hyk8p")
@@ -32,9 +28,8 @@ metadata/_custom_type_script = "uid://bt7fjryybia3f"
 script = ExtResource("6_ow5a4")
 metadata/_custom_type_script = "uid://b8uc3nt78dm6g"
 
-[node name="CountryManager" type="Node" parent="." node_paths=PackedStringArray("resource_locator", "game_time")]
+[node name="CountryManager" type="Node" parent="." node_paths=PackedStringArray("game_time")]
 script = ExtResource("7_hujxm")
-resource_locator = NodePath("../ResourceLocator")
 game_time = NodePath("../GameTime")
 countries = Array[ExtResource("8_b1x3f")]([ExtResource("9_a8run")])
 metadata/_custom_type_script = "uid://cq867j44f8q50"

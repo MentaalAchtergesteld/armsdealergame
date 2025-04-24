@@ -7,7 +7,6 @@ signal decision_made(decision: Decision);
 @export var politicians: Array[Politician];
 @export var possible_decisions: Array[Decision];
 
-var resource_locator: ResourceLocator;
 var scheduler: Scheduler;
 
 func get_corruption_map() -> Dictionary[Company, float]:
@@ -23,9 +22,8 @@ func make_decision() -> void:
 	if decision == null: return;
 	decision_made.emit(decision);
 
-func setup(resource_locator: ResourceLocator) -> void:
-	self.resource_locator = resource_locator;
-	self.scheduler = resource_locator.get_resource(Scheduler);
+func setup() -> void:
+	self.scheduler = ResourceLocator.get_resource(Scheduler);
 
 func process() -> void:
 	if randf() < 0.1:

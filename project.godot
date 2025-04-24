@@ -15,6 +15,10 @@ run/main_scene="uid://ryr0q2cuaw0q"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/good_icons/default.svg"
 
+[autoload]
+
+ResourceLocator="*res://autoloads/resource_locator/resource_locator.gd"
+
 [display]
 
 window/size/viewport_width=1920

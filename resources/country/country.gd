@@ -8,15 +8,11 @@ extends Resource
 @export var tarrifs: Dictionary[String, float] = {};
 @export var government: Government;
 
-var resource_locator: ResourceLocator;
-
 func _on_decision_made(decision: Decision) -> void:
-	decision.execute(self, resource_locator);
+	decision.execute(self);
 
-func setup(resource_locator: ResourceLocator) -> void:
-	self.resource_locator = resource_locator;
+func setup() -> void:
 	if government != null:
-		government.setup(resource_locator);
 		government.decision_made.connect(_on_decision_made);
 
 func process() -> void:

@@ -1,5 +1,5 @@
 class_name Decision
 extends Resource
 
-func execute(country: Country, resource_locator: ResourceLocator) -> void:
+func execute(country: Country) -> void:
 	pass;
