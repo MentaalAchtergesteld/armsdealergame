@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ryr0q2cuaw0q"]
+[gd_scene load_steps=10 format=3 uid="uid://ryr0q2cuaw0q"]
 
 [ext_resource type="Script" uid="uid://cgb77v3lkuovx" path="res://components/game_time/game_time.gd" id="1_hyk8p"]
 [ext_resource type="Script" uid="uid://bgoft155i5wuq" path="res://scenes/main/main.gd" id="1_k2fmo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cq867j44f8q50" path="res://components/country_manager/country_manager.gd" id="7_hujxm"]
 [ext_resource type="Script" uid="uid://b1pokjsb40oi7" path="res://resources/country/country.gd" id="8_b1x3f"]
 [ext_resource type="Resource" uid="uid://nv0e3okkc5dn" path="res://resources/country/democland.tres" id="9_a8run"]
+[ext_resource type="PackedScene" uid="uid://bf7teypthbhcb" path="res://ui/market_panel/market_panel.tscn" id="9_b1x3f"]
 
 [node name="Main" type="Node2D"]
 visible = false
@@ -51,3 +52,5 @@ layout_mode = 2
 
 [node name="TotalDays" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+
+[node name="MarketPanel" parent="CanvasLayer" instance=ExtResource("9_b1x3f")]

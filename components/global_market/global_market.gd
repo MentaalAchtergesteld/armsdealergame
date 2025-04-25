@@ -1,19 +1,6 @@
 class_name GlobalMarket
 extends Node
 
-class MarketItem:
-	var item: String;
-	var count: int;
-	var price: float;
-	
-	var owner: Country;
-	
-	func _init(item: String, count: int, price: float, owner: Country) -> void:
-		self.item = item;
-		self.count = count;
-		self.price = price;
-		self.owner = owner;
-
 var sell_offers: Array[MarketItem] = [];
 var buy_offers: Array[MarketItem] = [];
 

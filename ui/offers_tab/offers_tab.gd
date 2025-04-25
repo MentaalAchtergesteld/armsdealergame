@@ -1,0 +1,13 @@
+@tool
+class_name OffersTab
+extends MarginContainer
+
+@export var offers: Array[MarketItem]:
+	set(value):
+		offers = value;
+		update_offers();
+
+#var offer_listings: Array[OfferListing];
+
+func update_offers() -> void:
+	pass;

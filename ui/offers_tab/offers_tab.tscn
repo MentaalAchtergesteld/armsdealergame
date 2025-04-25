@@ -1,0 +1,129 @@
+[gd_scene load_steps=2 format=3 uid="uid://dre8xodj6m85a"]
+
+[ext_resource type="Script" uid="uid://b6orn8mrmwuil" path="res://ui/offers_tab/offers_tab.gd" id="1_mle4p"]
+
+[node name="OffersTab" type="MarginContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 272.0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_mle4p")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Filters" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SearchFilter" type="HBoxContainer" parent="VBoxContainer/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Filters/SearchFilter"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search..."
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Filters/SearchFilter"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Rifles"
+popup/item_1/id = 1
+popup/item_2/text = "Tanks"
+popup/item_2/id = 2
+
+[node name="PriceFilter" type="HBoxContainer" parent="VBoxContainer/Filters"]
+layout_mode = 2
+
+[node name="MinLabel" type="Label" parent="VBoxContainer/Filters/PriceFilter"]
+layout_mode = 2
+text = "Min:"
+
+[node name="MinValue" type="SpinBox" parent="VBoxContainer/Filters/PriceFilter"]
+layout_mode = 2
+allow_greater = true
+prefix = "€"
+
+[node name="MaxLabel" type="Label" parent="VBoxContainer/Filters/PriceFilter"]
+layout_mode = 2
+text = "Max:"
+
+[node name="MaxValue" type="SpinBox" parent="VBoxContainer/Filters/PriceFilter"]
+layout_mode = 2
+allow_greater = true
+prefix = "€"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Offers" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Offers"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Offers/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rifle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuantityLabel" type="Label" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quantity: 100"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Price: €250"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SellerLabel" type="Label" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Seller: Democland"
+
+[node name="PurchaseButton" type="Button" parent="VBoxContainer/Offers/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Purchase"
