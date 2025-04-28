@@ -1,34 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf7teypthbhcb"]
+[gd_scene load_steps=4 format=3 uid="uid://bf7teypthbhcb"]
 
-[ext_resource type="FontFile" uid="uid://dqf1pilfs5il1" path="res://assets/fonts/RobotoCondensed-VariableFont_wght.ttf" id="1_g7fdr"]
+[ext_resource type="Theme" uid="uid://1gpl3c6qfu0w" path="res://ui/main.tres" id="1_ln6v6"]
 [ext_resource type="Texture2D" uid="uid://c6wyhmj3lq870" path="res://assets/cross.svg" id="2_4x1bk"]
 [ext_resource type="PackedScene" uid="uid://dre8xodj6m85a" path="res://ui/offers_tab/offers_tab.tscn" id="3_ln6v6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7fdr"]
-bg_color = Color(0.24, 0.24, 0.24, 1)
-border_width_left = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.12, 0.12, 0.12, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egws4"]
-bg_color = Color(0.12, 0.12, 0.12, 1)
-
-[sub_resource type="Theme" id="Theme_egws4"]
-default_font = ExtResource("1_g7fdr")
-default_font_size = 16
-ContentPanel/base_type = &"PanelContainer"
-ContentPanel/styles/panel = SubResource("StyleBoxFlat_g7fdr")
-TitlebarPanel/base_type = &"PanelContainer"
-TitlebarPanel/styles/panel = SubResource("StyleBoxFlat_egws4")
 
 [node name="GlobalMarketPanel" type="VBoxContainer"]
 custom_minimum_size = Vector2(544, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
-theme = SubResource("Theme_egws4")
-theme_override_constants/separation = 0
+theme = ExtResource("1_ln6v6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 
 [node name="Titlebar" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -69,17 +53,20 @@ theme_type_variation = &"ContentPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="Content"]
 layout_mode = 2
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="TabContainer" type="TabContainer" parent="Content/MarginContainer"]
 layout_mode = 2
 tab_alignment = 1
 current_tab = 0
 
-[node name="Selling" parent="Content/MarginContainer/TabContainer" instance=ExtResource("3_ln6v6")]
+[node name="OffersTab" parent="Content/MarginContainer/TabContainer" instance=ExtResource("3_ln6v6")]
 layout_mode = 2
 
-[node name="Buying" parent="Content/MarginContainer/TabContainer" instance=ExtResource("3_ln6v6")]
+[node name="OffersTab2" parent="Content/MarginContainer/TabContainer" instance=ExtResource("3_ln6v6")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1

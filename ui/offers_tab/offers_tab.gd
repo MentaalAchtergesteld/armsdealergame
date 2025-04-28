@@ -1,6 +1,6 @@
 @tool
 class_name OffersTab
-extends MarginContainer
+extends PanelContainer
 
 @export var offers: Array[MarketItem]:
 	set(value):

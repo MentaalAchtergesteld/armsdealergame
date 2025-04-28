@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5wup6ygaqb1i"]
+
+[ext_resource type="Theme" uid="uid://1gpl3c6qfu0w" path="res://ui/main.tres" id="1_f2sas"]
+[ext_resource type="Script" uid="uid://cjmnv4lgumksl" path="res://ui/offer_listing/offer_listing.gd" id="2_p6x1l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6x1l"]
+bg_color = Color(0.24, 0.24, 0.24, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OfferListing" type="PanelContainer"]
+offset_right = 98.0
+offset_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_f2sas")
+theme_override_styles/panel = SubResource("StyleBoxFlat_p6x1l")
+script = ExtResource("2_p6x1l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Democland"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Rifle"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "x100"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "€100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BUY"
